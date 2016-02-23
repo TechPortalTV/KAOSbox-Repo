@@ -37,7 +37,9 @@ def INDEX():
     setView('movies', 'MAIN')
 
 def BUILDMENU():
-    addDir('Installatie KAOSbox','https://www.dropbox.com/s/mmh1yq2vfnfew7z/standard.zip?dl=1',5,ART+'kaosboxdownload.png',FANART,'')
+    addDir('Installatie KAOSbox (Kodi Helix en Isengard)','https://www.dropbox.com/s/mmh1yq2vfnfew7z/standard.zip?dl=1',5,ART+'kaosboxdownload.png',FANART,'')
+    setView('movies', 'MAIN')
+    addDir('Installatie KAOSbox (Kodi Jarvis)','https://www.dropbox.com/s/0yww9g6lycg11ti/standard16.zip?dl=1',5,ART+'kaosboxdownload.png',FANART,'')
     setView('movies', 'MAIN')
     addDir('Installatie XXX Pack (+18)','https://www.dropbox.com/s/u4amu1o382jwpbz/xxx.zip?dl=1',5,ART+'kaosboxdownload.png',FANART,'')
     setView('movies', 'MAIN')
@@ -82,7 +84,7 @@ def TextBoxes(heading,announce):
   TextBox()
 
 def facebook():
-    TextBoxes('KAOSbox Install', '[COLOR=red]KAOSbox - Home Entertainment Redefined[/COLOR] - voor meer informatie kijk op www.kaosbox.tv')
+    TextBoxes('KAOSbox Install', '[COLOR=red]KAOSbox - Home Entertainment Redefined[/COLOR]\nEindelijk een gratis no-nonsense plug en play media systeem voor je Raspberry Pi, Hummingboard/Cubox-i, Android en Windows media box!\n\nVoor meer informatie kijk op www.kaosbox.tv')
         
 
 def WIZARD(name,url,description):
