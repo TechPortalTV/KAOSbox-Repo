@@ -582,7 +582,7 @@ msgstr "TV"
 
 msgctxt "#31953"
 msgid "VIDEOS"
-msgstr "VIDEO'S"
+msgstr "ADDONS"
 
 msgctxt "#31954"
 msgid "MOVIES"
