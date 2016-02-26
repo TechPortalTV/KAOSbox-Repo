@@ -55,6 +55,27 @@
   </extension>
 </addon>
 
+<addon
+  id="plugin.video.dancetrippintv"
+  version="1.2.0"
+  name="DanceTrippinTV"
+  provider-name="Jin">
+  <requires>
+   <import addon="xbmc.python" version="2.1.0"/>
+   <import addon="script.module.requests" version="2.4.3"/>
+  </requires>
+  <extension
+    point="xbmc.python.pluginsource"
+    library="default.py">
+   <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>DanceTrippin - The Party's At Your House</summary>
+    <description>The best house, tech-house, techno DJ sets in video and audio</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
 <addon id="plugin.video.EnzoKnol"
 	name="EnzoKnol"
 	version="1.0.1"
@@ -312,6 +333,21 @@
 		<disclaimer>The owners and submitters to this repository do not host or distribute any of the content displayed by these addons nor do they have any affiliation with the content providers.</disclaimer>
 		<platform>all</platform>
 	</extension>
+</addon>
+
+<addon id="script.audio.spotimc" version="1.0-beta5" name="Spotimc" provider-name="Mikel Azkolain">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+    </requires>
+    <extension point="xbmc.python.script" library="default.py">
+        <provides>audio</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <summary>Spotimc gives you access to the Spotify music service.</summary>
+        <description>Spotimc lets you search for music, browse your playlists and play your favourite tunes right from XBMC.[CR][CR]This product uses SPOTIFY(R) CORE but is not endorsed, certified or otherwise approved in any way by Spotify. Spotify is the registered trade mark of the Spotify Group.[CR][CR]Special thanks to Seeleck for the logo and skin improvements.[CR][CR]Special thanks also for the CherryPy project, the DejaVu fonts project and the GNOME project (high contrast icons theme).</description>
+        <disclaimer>It requires a Spotify premium account.</disclaimer>
+    </extension>
 </addon>
 
 <addon id="script.kaosboxtools"
