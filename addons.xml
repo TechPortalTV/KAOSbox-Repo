@@ -287,7 +287,7 @@
 
 <addon
   id="plugin.video.superchillin"
-  version="1.0.7"
+  version="1.0.8"
   name="Superchillin"
   provider-name="KAOSbox">
   <requires>
@@ -434,7 +434,7 @@
   </extension>
 </addon>
 
-<addon id="script.upgrade.kaosbox-v3" name="KAOSbox Upgrade voor Versie 3" version="1.0.0" provider-name="KAOSbox">
+<addon id="script.upgrade.kaosbox-v3" name="KAOSbox Upgrade voor Versie 3" version="1.0.1" provider-name="KAOSbox">
 	<requires>
 		<import addon="xbmc.python" version="2.14.0"/>
 	</requires>
