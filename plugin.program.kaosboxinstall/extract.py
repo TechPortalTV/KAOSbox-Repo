@@ -1,1 +1,38 @@
-exec("import re;import base64");exec((lambda p,y:(lambda o,b,f:re.sub(o,b,f))(r"([0-9a-f]+)",lambda m:p(m,y),base64.b64decode("MTkgNCwgMTYKCjE0IDIzKDUsIDIsIDEyPTFiKToKCTI3IDEyOgoJCTJhIDI5KDUsIDIsIDEyKQoKCTJhIDMoNSwgMikKCQkKCjE0IDMoNSwgMik6CgkxNToKCQk5ID0gNC5kKDUsICcyNScpCgkJOS4xMCgyKQoJNyA4LCBlOgoJCTExIDE4KGUpCgkJMmEgMTMKCgkyYSAxNwoKCjE0IDI5KDUsIDIsIDEyKToKCgk5ID0gNC5kKDUsICAnMjUnKQoKCWYgPSAxYSgyMig5LmEoKSkpCgliICA9IDAKCgkxNToKCQkyMCAxYyAyNiA5LmEoKToKCQkJYiArPSAxCgkJCTYgPSBiIC8gZiAqIDFlCgkJCTEyLjYoMjEoNikpCgkJCTE1OiA5LmMoMWMsIDIpCgkJCTc6CgkJCQkjMTYuMWYoIjI0JzI4IGM6ICIgKyAxYykKCQkJCTFkCgk3IDgsIGU6CgkJMTEgMTgoZSkKCQkyYSAxMwoKCTJhIDE3")))(lambda a,b:b[int("0x"+a.group(1),16)],"0|1|_out|allNoProgress|zipfile|_in|update|except|Exception|zin|infolist|count|extract|ZipFile|e|nFiles|extractall|print|dp|False|def|try|xbmc|True|str|import|float|None|item|pass|100|log|for|int|len|all|Can|r|in|if|t|allWithProgress|return".split("|")))
+import zipfile
+
+def all(_in, _out, dp=None):
+    if dp:
+        return allWithProgress(_in, _out, dp)
+
+    return allNoProgress(_in, _out)
+        
+
+def allNoProgress(_in, _out):
+    try:
+        zin = zipfile.ZipFile(_in, 'r')
+        zin.extractall(_out)
+    except Exception, e:
+        print str(e)
+        return False
+
+    return True
+
+
+def allWithProgress(_in, _out, dp):
+
+    zin = zipfile.ZipFile(_in,  'r')
+
+    nFiles = float(len(zin.infolist()))
+    count  = 0
+
+    try:
+        for item in zin.infolist():
+            count += 1
+            update = count / nFiles * 100
+            dp.update(int(update))
+            zin.extract(item, _out)
+    except Exception, e:
+        print str(e)
+        return False
+
+    return True

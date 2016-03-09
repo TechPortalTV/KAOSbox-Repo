@@ -1,6 +1,3 @@
-3.0.5
-- Download progress (Bedankt Mortael)
-
 3.0.0
 - External list 
 

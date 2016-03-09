@@ -1,1 +1,20 @@
-exec("import re;import base64");exec((lambda p,y:(lambda o,b,f:re.sub(o,b,f))(r"([0-9a-f]+)",lambda m:p(m,y),base64.b64decode("YiAxNQpiIDE5CmIgMWEKYiAyYgoKMzggNSgyNCk6CgkxNCAyOCgxMywgZik6IDEzLmYgPSBmIAoJMTQgMjkoMTMpOiAzMyAzYigxMy5mKQoKMTQgMjYoYywgMTIpOgoKCTE0IGQoNDgsIDEsIDQsIGM9MjcsOD0yNyk6CgkJMTg6CgkJCTMgPSAyYSgoNDgqMSoxMSkvNCwgMTEpCgkJCTYgPSAxZCg0OCkgKiAxIC8gKDEwICogMTApCgkJCTIgPSA0NCgoNDgqMSkgLyAoMWEuMWUoKSAtIDIxKSkKCQkJMzQgMiA+IDA6CgkJCQkyMyA9ICg0IC0gNDggKiAxKSAvIDIKCQkJM2E6CgkJCQkyMyA9IDAKCQkJMiA9IDIgLyAxMAoJCQkxZiA9IDFkKDQpIC8gKDEwICogMTApCgkJCTMwID0gJyUuMmYgM2MgNDUgJS4yZiAzYycgJSAoNiwgMWYpCgkJCWUgPSAnMzY6ICUuMmYgNDYvNDkgJyAlIDIKCQkJZSArPSAnNDI6ICUyZDolMmQnICUgMzIoMjMsIDQ3KQoJCQk4LjkoMywnJywzMCxlKQoJCWE6CgkJCTMgPSAxMQoJCQk4LjkoMykKCQkzNCA4LjQzKCk6CgkJCTguMjAoKQoJCQkxYyA1KCcxNyA3JykKCQkKCTggPSAxNS4xNigpCgk4LjMxKCI3IiwiNDEgMjUiKQoJMjEgPSAxYS4xZSgpCgkxODoKCQkxOS4xYihjLDEyLDJlIDNmLCAzZSwgM2QsIGM9YzogZCgzZiwzZSwzZCxjLDgpKQoJYToKCQkzNSAyYi4zOS4yMigxMik6CgkJCTE4OgoJCQkJMmIuMmMoMTIpCgkJCQkzNwoJCQlhOgoJCQkJNDAJCQogCgoJCQojIDE0IGQoNDgsIDEsIDQsIGMsIDgpOgoJIyAxODoKCQkjIDMgPSAyYSgoNDgqMSoxMSkvNCwgMTEpCgkJIyA4LjkoMykKCSMgYToKCQkjIDMgPSAxMQoJCSMgOC45KDMpCgkjIDM0IDguNDMoKTogCgkJIyAxYyA1KCcxNyA3JykKCQkjIDguMjAoKQ==")))(lambda a,b:b[int("0x"+a.group(1),16)],"0|blocksize|kbps_speed|percent|filesize|StopDownloading|currently_downloaded|Downloading|dp|update|except|import|url|_pbhook|e|value|1024|100|dest|self|def|xbmcgui|DialogProgress|Stopped|try|urllib|time|urlretrieve|raise|float|clock|total|close|start|exists|eta|Exception|ogenblik|download|None|__init__|__str__|min|os|remove|02d|lambda|02f|mbs|create|divmod|return|if|while|Speed|break|class|path|else|repr|MB|fs|bs|nb|pass|Een|ETA|iscanceled|int|of|Kb|60|numblocks|s".split("|")))
+import xbmcgui
+import urllib
+
+def download(url, dest, dp = None):
+    if not dp:
+        dp = xbmcgui.DialogProgress()
+        dp.create("KAOSbox Install","Downloaden Bestanden",' ', ' ')
+    dp.update(0)
+    urllib.urlretrieve(url,dest,lambda nb, bs, fs, url=url: _pbhook(nb,bs,fs,url,dp))
+ 
+def _pbhook(numblocks, blocksize, filesize, url, dp):
+    try:
+        percent = min((numblocks*blocksize*100)/filesize, 100)
+        dp.update(percent)
+    except:
+        percent = 100
+        dp.update(percent)
+    if dp.iscanceled(): 
+        raise Exception("Canceled")
+        dp.close()
