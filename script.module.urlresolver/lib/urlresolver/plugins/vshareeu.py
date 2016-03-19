@@ -17,28 +17,33 @@
 """
 
 import re
-from urlresolver import common
-from urlresolver.resolver import UrlResolver, ResolverError
+from t0mm0.common.net import Net
+from urlresolver.plugnplay.interfaces import UrlResolver
+from urlresolver.plugnplay.interfaces import PluginSettings
+from urlresolver.plugnplay import Plugin
 
-class VshareEuResolver(UrlResolver):
+class VshareEuResolver(Plugin, UrlResolver, PluginSettings):
+    implements = [UrlResolver, PluginSettings]
     name = "vshare.eu"
     domains = ['vshare.eu']
     pattern = '(?://|\.)(vshare\.eu)/(?:embed-|)?([0-9a-zA-Z/]+)'
 
     def __init__(self):
-        self.net = common.Net()
+        p = self.get_setting('priority') or 100
+        self.priority = int(p)
+        self.net = Net()
 
     def get_media_url(self, host, media_id):
         web_url = self.get_url(host, media_id)
         html = self.net.http_GET(web_url).content
         if '404 Not Found' in html or 'Has Been Removed' in html:
-            raise ResolverError('The requested video was not found.')
-
+            raise UrlResolver.ResolverError('The requested video was not found.')
+        
         match = re.search('file\s*:\s*"([^"]+)', html)
         if match:
             return match.group(1)
-
-        raise ResolverError('No playable video found.')
+        
+        raise UrlResolver.ResolverError('No playable video found.')
 
     def get_url(self, host, media_id):
         return 'http://vshare.eu/embed-%s.html' % media_id

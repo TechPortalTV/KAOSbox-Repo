@@ -18,16 +18,22 @@
 
 import re
 from lib import jsunpack
+from t0mm0.common.net import Net
 from urlresolver import common
-from urlresolver.resolver import UrlResolver, ResolverError
+from urlresolver.plugnplay.interfaces import UrlResolver
+from urlresolver.plugnplay.interfaces import PluginSettings
+from urlresolver.plugnplay import Plugin
 
-class AllVidResolver(UrlResolver):
+class AllVidResolver(Plugin, UrlResolver, PluginSettings):
+    implements = [UrlResolver, PluginSettings]
     name = "allvid"
     domains = ["allvid.ch"]
     pattern = '(?://|\.)(allvid\.ch)/(?:embed-)?([0-9a-zA-Z]+)'
 
     def __init__(self):
-        self.net = common.Net()
+        p = self.get_setting('priority') or 100
+        self.priority = int(p)
+        self.net = Net()
         self.user_agent = common.IE_USER_AGENT
         self.net.set_user_agent(self.user_agent)
         self.headers = {'User-Agent': self.user_agent}
@@ -46,7 +52,7 @@ class AllVidResolver(UrlResolver):
             if r:
                 return r.group(1)
         else:
-            raise ResolverError('File not found')
+            raise UrlResolver.ResolverError('File not found')
 
     def get_url(self, host, media_id):
         return 'http://%s/embed-%s.html' % (host, media_id)
@@ -57,6 +63,6 @@ class AllVidResolver(UrlResolver):
             return r.groups()
         else:
             return False
-
+    
     def valid_url(self, url, host):
         return re.search(self.pattern, url) or self.name in host

@@ -18,16 +18,21 @@
 
 import re
 import urllib
-from urlresolver import common
-from urlresolver.resolver import UrlResolver, ResolverError
+from t0mm0.common.net import Net
+from urlresolver.plugnplay.interfaces import UrlResolver
+from urlresolver.plugnplay.interfaces import PluginSettings
+from urlresolver.plugnplay import Plugin
 
-class VideoHutResolver(UrlResolver):
+class VideoHutResolver(Plugin, UrlResolver, PluginSettings):
+    implements = [UrlResolver, PluginSettings]
     name = "videohut.to"
-    domains = ["videohut.to"]
+    domains = [ "videohut.to" ]
     pattern = '(?://|\.)(videohut\.to)/(?:v\/|embed.php\?id=)([0-9a-z]+)'
 
     def __init__(self):
-        self.net = common.Net()
+        p = self.get_setting('priority') or 100
+        self.priority = int(p)
+        self.net = Net()
 
     def get_media_url(self, host, media_id):
         web_url = self.get_url(host, media_id)
@@ -41,7 +46,7 @@ class VideoHutResolver(UrlResolver):
         if filekey:
             filekey = urllib.quote_plus(filekey[0]).replace('.', '%2E').replace('-', '%2D')
 
-        for _i in range(0, 3):
+        for i in range(0, 3):
             try:
                 player_url = 'http://www.videohut.to/api/player.api.php?key=%s&file=%s' % (key, filekey)
                 html = self.net.http_GET(player_url).content
@@ -53,11 +58,11 @@ class VideoHutResolver(UrlResolver):
             except:
                 pass
 
-        raise ResolverError('File Not Found or removed')
+        raise UrlResolver.ResolverError('File Not Found or removed')
 
     def get_url(self, host, media_id):
-        return 'http://www.videohut.to/embed.php?id=%s' % media_id
-
+            return 'http://www.videohut.to/embed.php?id=%s' % media_id
+    
     def get_host_and_id(self, url):
         r = re.search(self.pattern, url)
         if r:

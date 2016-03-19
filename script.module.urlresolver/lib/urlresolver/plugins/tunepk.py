@@ -17,22 +17,27 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 '''
 
 import re
-from urlresolver import common
-from urlresolver.resolver import UrlResolver, ResolverError
+from t0mm0.common.net import Net
+from urlresolver.plugnplay.interfaces import UrlResolver
+from urlresolver.plugnplay.interfaces import PluginSettings
+from urlresolver.plugnplay import Plugin
 
-class TunePkResolver(UrlResolver):
+class TunePkResolver(Plugin, UrlResolver, PluginSettings):
+    implements = [UrlResolver, PluginSettings]
     name = "tune.pk"
     domains = ["tune.pk"]
     pattern = '(?://|\.)(tune\.pk)/(?:player|video|play)/(?:[\w\.\?]+=)?(\d+)'
 
     def __init__(self):
-        self.net = common.Net()
+        p = self.get_setting('priority') or 100
+        self.priority = int(p)
+        self.net = Net()
 
     def get_media_url(self, host, media_id):
         web_url = self.get_url(host, media_id)
         link = repr(self.net.http_GET(web_url).content)
         if link.find('404 Not Found') >= 0:
-            raise ResolverError('The requested video was not found.')
+            raise UrlResolver.ResolverError('The requested video was not found.')
 
         videoUrl = []
         # borrowed from AJ's turtle-x
@@ -58,7 +63,7 @@ class TunePkResolver(UrlResolver):
 
             return vUrl
         else:
-            raise ResolverError('No playable video found.')
+            raise UrlResolver.ResolverError('No playable video found.')
 
     def get_url(self, host, media_id):
         return 'http://embed.tune.pk/play/%s' % media_id
@@ -73,8 +78,8 @@ class TunePkResolver(UrlResolver):
     def valid_url(self, url, host):
         return re.search(self.pattern, url) or self.name in host
 
-    @classmethod
-    def get_settings_xml(cls):
-        xml = super(cls, cls).get_settings_xml()
-        xml.append('<setting label="Video Quality" id="%s_quality" type="enum" values="High|Medium|Low" default="0" />' % (cls.__name__))
+    def get_settings_xml(self):
+        xml = PluginSettings.get_settings_xml(self)
+        xml += '<setting label="Video Quality" id="%s_quality" ' % self.__class__.__name__
+        xml += 'type="enum" values="High|Medium|Low" default="0" />\n'
         return xml

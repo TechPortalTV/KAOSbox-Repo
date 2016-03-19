@@ -18,16 +18,21 @@
 
 import re
 import urllib
-from urlresolver import common
-from urlresolver.resolver import UrlResolver, ResolverError
+from t0mm0.common.net import Net
+from urlresolver.plugnplay.interfaces import UrlResolver
+from urlresolver.plugnplay.interfaces import PluginSettings
+from urlresolver.plugnplay import Plugin
 
-class VidCrazyResolver(UrlResolver):
+class VidCrazyResolver(Plugin, UrlResolver, PluginSettings):
+    implements = [UrlResolver, PluginSettings]
     name = 'vidcrazy.net'
     domains = ['vidcrazy.net', 'uploadcrazy.net']
     pattern = '(?://|\.)(vidcrazy.net|uploadcrazy.net)/\D+.php\?file=([0-9a-zA-Z\-_]+)'
 
     def __init__(self):
-        self.net = common.Net()
+        p = self.get_setting('priority') or 100
+        self.priority = int(p)
+        self.net = Net()
 
     def get_media_url(self, host, media_id):
         web_url = self.get_url(host, media_id)
@@ -36,7 +41,7 @@ class VidCrazyResolver(UrlResolver):
         if r:
             stream_url = urllib.unquote_plus(r.group(1))
         else:
-            raise ResolverError('no file located')
+            raise UrlResolver.ResolverError('no file located')
         return stream_url
 
     def get_url(self, host, media_id):

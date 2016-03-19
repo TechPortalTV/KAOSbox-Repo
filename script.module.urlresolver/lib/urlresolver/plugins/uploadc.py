@@ -17,17 +17,22 @@
 """
 import re
 import urllib
+from t0mm0.common.net import Net
 from lib import jsunpack
-from urlresolver import common
-from urlresolver.resolver import UrlResolver, ResolverError
+from urlresolver.plugnplay.interfaces import UrlResolver
+from urlresolver.plugnplay.interfaces import PluginSettings
+from urlresolver.plugnplay import Plugin
 
-class UploadcResolver(UrlResolver):
+class UploadcResolver(Plugin, UrlResolver, PluginSettings):
+    implements = [UrlResolver, PluginSettings]
     name = 'uploadc'
     domains = ['uploadc.com', 'uploadc.ch', 'zalaa.com']
     pattern = '(?://|\.)(uploadc.com|uploadc.ch|zalaa.com)/(?:embed-)?([0-9a-zA-Z]+)'
 
     def __init__(self):
-        self.net = common.Net()
+        p = self.get_setting('priority') or 100
+        self.priority = int(p)
+        self.net = Net()
 
     def get_media_url(self, host, media_id):
         web_url = self.get_url(host, media_id)
@@ -37,16 +42,16 @@ class UploadcResolver(UrlResolver):
             r = re.search('src="([^"]+)', js_data)
             if r:
                 stream_url = r.group(1).replace(' ', '%20')
-                stream_url += '|' + urllib.urlencode({'Referer': web_url})
+                stream_url += '|' + urllib.urlencode({ 'Referer': web_url })
                 return stream_url
-
+        
         match = re.search("'file'\s*,\s*'([^']+)", html)
         if match:
             stream_url = match.group(1).replace(' ', '%20')
-            stream_url += '|' + urllib.urlencode({'Referer': web_url})
+            stream_url += '|' + urllib.urlencode({ 'Referer': web_url })
             return stream_url
-
-        raise ResolverError('File Not Found or removed')
+                
+        raise UrlResolver.ResolverError('File Not Found or removed')
 
     def get_url(self, host, media_id):
         return 'http://uploadc.com/embed-%s.html' % (media_id)
@@ -57,6 +62,6 @@ class UploadcResolver(UrlResolver):
             return r.groups()
         else:
             return False
-
+    
     def valid_url(self, url, host):
         return re.search(self.pattern, url) or self.name in host

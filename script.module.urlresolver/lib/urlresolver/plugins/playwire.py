@@ -18,16 +18,21 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 import re
 import xml.etree.ElementTree as ET
-from urlresolver import common
-from urlresolver.resolver import UrlResolver, ResolverError
+from t0mm0.common.net import Net
+from urlresolver.plugnplay.interfaces import UrlResolver
+from urlresolver.plugnplay.interfaces import PluginSettings
+from urlresolver.plugnplay import Plugin
 
-class PlaywireResolver(UrlResolver):
+class PlaywireResolver(Plugin, UrlResolver, PluginSettings):
+    implements = [UrlResolver, PluginSettings]
     name = "playwire"
     domains = ["playwire.com"]
     pattern = '(?://|\.)(cdn\.playwire\.com.+?\d+)/(?:config|embed)/(\d+)'
 
     def __init__(self):
-        self.net = common.Net()
+        p = self.get_setting('priority') or 100
+        self.priority = int(p)
+        self.net = Net()
 
     def get_media_url(self, host, media_id):
         web_url = self.get_url(host, media_id)
@@ -44,15 +49,15 @@ class PlaywireResolver(UrlResolver):
             else:
                 accessdenied = root.find('Message')
                 if accessdenied is not None:
-                    raise ResolverError('You do not have permission to view this content')
+                    raise UrlResolver.ResolverError('You do not have permission to view this content')
 
-                raise ResolverError('No playable video found.')
+                raise UrlResolver.ResolverError('No playable video found.')
         else:  # json source
             r = re.search('"src":"(.+?)"', html)
             if r:
                 return r.group(1)
             else:
-                raise ResolverError('No playable video found.')
+                raise UrlResolver.ResolverError('No playable video found.')
 
     def get_url(self, host, media_id):
         if not 'v2' in host:
@@ -66,6 +71,6 @@ class PlaywireResolver(UrlResolver):
             return r.groups()
         else:
             return False
-
+    
     def valid_url(self, url, host):
         return re.search(self.pattern, url) or self.name in host

@@ -19,16 +19,22 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 import re
 import json
 import urlparse
-from urlresolver import common
-from urlresolver.resolver import UrlResolver, ResolverError
+from t0mm0.common.net import Net
+from urlresolver.plugnplay.interfaces import UrlResolver
+from urlresolver.plugnplay.interfaces import PluginSettings
+from urlresolver.plugnplay import Plugin
 
-class VideoTTResolver(UrlResolver):
+
+class VideoTTResolver(Plugin, UrlResolver, PluginSettings):
+    implements = [UrlResolver, PluginSettings]
     name = "videott"
     domains = ["video.tt"]
     pattern = '(?://|\.)(video\.tt)/(?:video\/|embed\/|watch_video\.php\?v=)(\w+)'
 
     def __init__(self):
-        self.net = common.Net()
+        p = self.get_setting('priority') or 100
+        self.priority = int(p)
+        self.net = Net()
 
     def get_media_url(self, host, media_id):
         json_url = 'http://www.video.tt/player_control/settings.php?v=%s' % media_id
@@ -65,7 +71,7 @@ class VideoTTResolver(UrlResolver):
             vUrl = vUrl[0][1]
             return vUrl
 
-        raise ResolverError('The requested video was not found.')
+        raise UrlResolver.ResolverError('The requested video was not found.')
 
     def get_url(self, host, media_id):
         return 'http://www.video.tt/watch_video.php?v=%s' % media_id
@@ -80,8 +86,8 @@ class VideoTTResolver(UrlResolver):
     def valid_url(self, url, host):
         return re.search(self.pattern, url) or self.name in host
 
-    @classmethod
-    def get_settings_xml(cls):
-        xml = super(cls, cls).get_settings_xml()
-        xml.append('<setting label="Video Quality" id="%s_quality" type="enum" values="High|Medium|Low" default="0" />' % (cls.__name__))
+    def get_settings_xml(self):
+        xml = PluginSettings.get_settings_xml(self)
+        xml += '<setting label="Video Quality" id="%s_quality" ' % self.__class__.__name__
+        xml += 'type="enum" values="Low|Medium|High" default="2" />\n'
         return xml

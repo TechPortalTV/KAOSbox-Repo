@@ -17,15 +17,23 @@
 """
 
 import re
-from urlresolver.resolver import UrlResolver, ResolverError
+from t0mm0.common.net import Net
+from urlresolver.plugnplay.interfaces import UrlResolver
+from urlresolver.plugnplay.interfaces import PluginSettings
+from urlresolver.plugnplay import Plugin
 
-class YoutubeResolver(UrlResolver):
+class YoutubeResolver(Plugin, UrlResolver, PluginSettings):
+    implements = [UrlResolver, PluginSettings]
     name = "youtube"
-    domains = ['youtube.com', 'youtu.be']
+    domains = [ 'youtube.com', 'youtu.be' ]
     pattern = '(?://|\.)(youtube.com|youtu.be)/(?:embed/|.+?\?v=|.+?\&v=)([0-9A-Za-z_\-]+)'
 
+    def __init__(self):
+        p = self.get_setting('priority') or 100
+        self.priority = int(p)
+
     def get_media_url(self, host, media_id):
-        plugin = 'plugin://plugin.video.youtube/play/?video_id=' + media_id
+        plugin = 'plugin://plugin.video.youtube/?action=play_video&videoid=' + media_id
         return plugin
 
     def get_url(self, host, media_id):
@@ -41,8 +49,8 @@ class YoutubeResolver(UrlResolver):
     def valid_url(self, url, host):
         return re.search(self.pattern, url) or self.name in host
 
-    @classmethod
-    def get_settings_xml(cls):
-        xml = super(cls, cls).get_settings_xml()
-        xml.append('<setting label="This plugin calls the youtube addon -change settings there." type="lsep" />')
+    def get_settings_xml(self):
+        xml = PluginSettings.get_settings_xml(self)
+        xml += '<setting label="This plugin calls the youtube addon - '
+        xml += 'change settings there." type="lsep" />\n'
         return xml

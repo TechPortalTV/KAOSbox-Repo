@@ -15,20 +15,20 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
-import os
-from lib import log_utils  # @UnusedImport
-from lib.net import Net  # @UnusedImport
-import xbmcaddon
-import xbmc
 
-addon = xbmcaddon.Addon('script.module.urlresolver')
-addon_path = addon.getAddonInfo('path')
+import os
+from t0mm0.common.addon import Addon
+import xbmc
+import xbmcaddon
+import xbmcgui
+import xbmcplugin
+
+addon = Addon('script.module.urlresolver')
+addon_path = addon.get_path()
 plugins_path = os.path.join(addon_path, 'lib', 'urlresolver', 'plugins')
-profile_path = xbmc.translatePath(addon.getAddonInfo('profile'))
+profile_path = addon.get_profile()
 settings_file = os.path.join(addon_path, 'resources', 'settings.xml')
-addon_version = addon.getAddonInfo('version')
-get_setting = addon.getSetting
-set_setting = addon.setSetting
+addon_version = addon.get_version()
 
 IE_USER_AGENT = 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; AS; rv:11.0) like Gecko'
 FF_USER_AGENT = 'Mozilla/5.0 (Windows NT 6.3; rv:36.0) Gecko/20100101 Firefox/36.0'

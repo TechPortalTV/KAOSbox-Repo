@@ -22,16 +22,21 @@
 import re
 import json
 import urllib
-from urlresolver import common
-from urlresolver.resolver import UrlResolver, ResolverError
+from t0mm0.common.net import Net
+from urlresolver.plugnplay.interfaces import UrlResolver
+from urlresolver.plugnplay.interfaces import PluginSettings
+from urlresolver.plugnplay import Plugin
 
-class MailRuResolver(UrlResolver):
+class MailRuResolver(Plugin, UrlResolver, PluginSettings):
+    implements = [UrlResolver, PluginSettings]
     name = "mail.ru"
     domains = ['mail.ru', 'my.mail.ru', 'videoapi.my.mail.ru', 'api.video.mail.ru']
     pattern = '(?://|\.)(mail\.ru)/.+?/mail/(.+?)/.+?/(\d*)\.html'
 
     def __init__(self):
-        self.net = common.Net()
+        p = self.get_setting('priority') or 100
+        self.priority = int(p)
+        self.net = Net()
 
     def get_media_url(self, host, media_id):
         web_url = self.get_url(host, media_id)
@@ -52,12 +57,12 @@ class MailRuResolver(UrlResolver):
                     best_quality = int(video['key'][:-1])
 
                 if 'set-cookie' in headers:
-                    stream_url += '|' + urllib.urlencode({'Cookie': headers['set-cookie']})
+                    stream_url += '|' + urllib.urlencode({ 'Cookie': headers['set-cookie'] })
 
             if stream_url:
                 return stream_url
 
-        raise ResolverError('No playable video found.')
+        raise UrlResolver.ResolverError('No playable video found.')
 
     def get_url(self, host, media_id):
         user, media_id = media_id.split('|')

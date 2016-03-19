@@ -17,17 +17,22 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 """
 
 import re
+from t0mm0.common.net import Net
 from lib import jsunpack
-from urlresolver import common
-from urlresolver.resolver import UrlResolver, ResolverError
+from urlresolver.plugnplay.interfaces import UrlResolver
+from urlresolver.plugnplay.interfaces import PluginSettings
+from urlresolver.plugnplay import Plugin
 
-class XvidstageResolver(UrlResolver):
+class XvidstageResolver(Plugin, UrlResolver, PluginSettings):
+    implements = [UrlResolver, PluginSettings]
     name = "xvidstage"
     domains = ["xvidstage.com"]
-    pattern = '(?://|\.)(xvidstage\.com)/(?:embed-|)?([0-9A-Za-z]+)'
+    pattern ='(?://|\.)(xvidstage\.com)/(?:embed-|)?([0-9A-Za-z]+)'
 
     def __init__(self):
-        self.net = common.Net()
+        p = self.get_setting('priority') or 100
+        self.priority = int(p)
+        self.net = Net()
 
     def get_media_url(self, host, media_id):
         web_url = self.get_url(host, media_id)
@@ -44,11 +49,11 @@ class XvidstageResolver(UrlResolver):
 
             if stream_url:
                 return stream_url[0]
-
-        raise ResolverError('File Not Found or removed')
+            
+        raise UrlResolver.ResolverError('File Not Found or removed')
 
     def get_url(self, host, media_id):
-        return 'http://www.xvidstage.com/embed-%s.html' % media_id
+            return 'http://www.xvidstage.com/embed-%s.html' % media_id
 
     def get_host_and_id(self, url):
         r = re.search(self.pattern, url)

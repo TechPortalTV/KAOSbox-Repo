@@ -17,17 +17,22 @@
 """
 
 import re
+from t0mm0.common.net import Net
 from lib import jsunpack
-from urlresolver import common
-from urlresolver.resolver import UrlResolver, ResolverError
+from urlresolver.plugnplay.interfaces import UrlResolver
+from urlresolver.plugnplay.interfaces import PluginSettings
+from urlresolver.plugnplay import Plugin
 
-class VidUpResolver(UrlResolver):
+class VidUpResolver(Plugin, UrlResolver, PluginSettings):
+    implements = [UrlResolver, PluginSettings]
     name = "vidup"
     domains = ["vidup.org", "vidup.me"]
     pattern = '(?://|\.)(vidup.(?:me|org))/(?:embed-)?([0-9a-zA-Z]+)'
 
     def __init__(self):
-        self.net = common.Net()
+        p = self.get_setting('priority') or 100
+        self.priority = int(p)
+        self.net = Net()
 
     def get_media_url(self, host, media_id):
         web_url = self.get_url(host, media_id)
@@ -47,11 +52,11 @@ class VidUpResolver(UrlResolver):
             if best_stream_url:
                 return best_stream_url
 
-            raise ResolverError('File Not Found or removed')
+            raise UrlResolver.ResolverError('File Not Found or removed')
 
     def get_url(self, host, media_id):
-        return 'http://vidup.me/embed-%s.html' % media_id
-
+            return 'http://vidup.me/embed-%s.html' % media_id
+    
     def get_host_and_id(self, url):
         r = re.search(self.pattern, url)
         if r:

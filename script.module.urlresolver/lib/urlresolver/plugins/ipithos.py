@@ -18,22 +18,28 @@
 
 
 import re
+from t0mm0.common.net import Net
 from lib import jsunpack
 from urlresolver import common
-from urlresolver.resolver import UrlResolver, ResolverError
+from urlresolver.plugnplay.interfaces import UrlResolver
+from urlresolver.plugnplay.interfaces import PluginSettings
+from urlresolver.plugnplay import Plugin
 
-class IpithosResolver(UrlResolver):
+class IpithosResolver(Plugin, UrlResolver, PluginSettings):
+    implements = [UrlResolver, PluginSettings]
     name = 'ipithos.to'
-    domains = ['ipithos.to']
+    domains = [ 'ipithos.to' ]
     pattern = '(?://|\.)(ipithos\.to)/(?:embed-)?([0-9a-zA-Z]+)'
 
     def __init__(self):
-        self.net = common.Net()
+        p = self.get_setting('priority') or 100
+        self.priority = int(p)
+        self.net = Net()
 
     def get_media_url(self, host, media_id):
         web_url = self.get_url(host, media_id)
 
-        headers = {'User-Agent': common.IOS_USER_AGENT}
+        headers = { 'User-Agent': common.IOS_USER_AGENT }
 
         html = self.net.http_GET(web_url, headers=headers).content
 
@@ -46,8 +52,8 @@ class IpithosResolver(UrlResolver):
 
             if stream_url:
                 return stream_url[0]
-
-        raise ResolverError('File Not Found or removed')
+            
+        raise UrlResolver.ResolverError('File Not Found or removed')
 
     def get_url(self, host, media_id):
         return 'http://ipithos.to/embed-%s.html' % media_id
@@ -58,6 +64,6 @@ class IpithosResolver(UrlResolver):
             return r.groups()
         else:
             return False
-
+    
     def valid_url(self, url, host):
         return re.search(self.pattern, url) or self.name in host

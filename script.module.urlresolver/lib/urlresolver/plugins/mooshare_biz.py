@@ -17,42 +17,44 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 '''
 
 import re
-from urlresolver import common
-from urlresolver.resolver import UrlResolver, ResolverError
+from t0mm0.common.net import Net
+from urlresolver.plugnplay.interfaces import UrlResolver
+from urlresolver.plugnplay.interfaces import PluginSettings
+from urlresolver.plugnplay import Plugin
 import xbmc
 
-class MooShareResolver(UrlResolver):
+class MooShareResolver(Plugin, UrlResolver, PluginSettings):
+    implements = [UrlResolver, PluginSettings]
     name = "mooshare"
-    domains = ["mooshare.biz"]
+    domains = [ "mooshare.biz" ]
     pattern = '(?://|\.)(mooshare\.biz)/(?:embed-|iframe/)?([0-9a-zA-Z]+)'
 
     def __init__(self):
-        self.net = common.Net()
+        p = self.get_setting('priority') or 100
+        self.priority = int(p)
+        self.net = Net()
 
     def get_media_url(self, host, media_id):
-        url = self.get_url(host, media_id)
-        html = self.net.http_GET(url).content
-
-        data = {}
-        if '<form role="search"' in html and '<Form method="POST" action=\'\'>' in html: html = html.split('<Form method="POST" action=\'\'>')[1]
-        r = re.findall(r'type="hidden" name="(.+?)"\s* value="?(.+?)">', html)
-        for name, value in r:
-            data[name] = value
-        data[u'referer'] = ''
-        data[u'usr_login'] = ''
-        data[u'imhuman'] = 'Proceed to video'
-        data[u'btn_download'] = 'Proceed to video'
-        xbmc.sleep(5000)
-        html = self.net.http_POST(url, data).content
-
-        r = re.search('file\s*:\s*"(.+?)"', html)
-        if r:
-            return r.group(1)
-        else:
-            raise ResolverError('could not find video')
-
+            url = self.get_url(host, media_id)
+            html = self.net.http_GET(url).content
+    
+            data = {}
+            if '<form role="search"' in html and '<Form method="POST" action=\'\'>' in html: html=html.split('<Form method="POST" action=\'\'>')[1]
+            r = re.findall(r'type="hidden" name="(.+?)"\s* value="?(.+?)">', html)
+            for name, value in r:
+                data[name] = value
+            data[u'referer']=''; data[u'usr_login']=''; data[u'imhuman']='Proceed to video'; data[u'btn_download']='Proceed to video'; 
+            xbmc.sleep(5000)
+            html = self.net.http_POST(url, data).content
+            
+            r = re.search('file\s*:\s*"(.+?)"', html)
+            if r:
+                return r.group(1)
+            else:
+                raise UrlResolver.ResolverError('could not find video')
+        
     def get_url(self, host, media_id):
-        return 'http://mooshare.biz/%s' % media_id
+        return 'http://mooshare.biz/%s' % media_id 
 
     def get_host_and_id(self, url):
         r = re.search(self.pattern, url)
@@ -60,6 +62,6 @@ class MooShareResolver(UrlResolver):
             return r.groups()
         else:
             return False
-
+    
     def valid_url(self, url, host):
         return re.search(self.pattern, url) or self.name in host

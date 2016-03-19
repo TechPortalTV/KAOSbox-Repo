@@ -16,17 +16,23 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 import re
+from t0mm0.common.net import Net
 from lib import jsunpack
 from urlresolver import common
-from urlresolver.resolver import UrlResolver, ResolverError
+from urlresolver.plugnplay.interfaces import UrlResolver
+from urlresolver.plugnplay.interfaces import PluginSettings
+from urlresolver.plugnplay import Plugin
 
-class TusfilesResolver(UrlResolver):
+class TusfilesResolver(Plugin, UrlResolver, PluginSettings):
+    implements = [UrlResolver, PluginSettings]
     name = "tusfiles"
     domains = ['tusfiles.net']
     pattern = '(?://|\.)(tusfiles\.net)/(?:embed-)?([0-9a-zA-Z]+)'
 
     def __init__(self):
-        self.net = common.Net()
+        p = self.get_setting('priority') or 100
+        self.priority = int(p)
+        self.net = Net()
 
     def get_media_url(self, host, media_id):
         direct_url = 'http://%s/%s' % (host, media_id)
@@ -42,7 +48,7 @@ class TusfilesResolver(UrlResolver):
                 if stream_url:
                     return stream_url[0]
 
-        raise ResolverError('Unable to locate link')
+        raise UrlResolver.ResolverError('Unable to locate link')
 
     def get_url(self, host, media_id):
         return 'http://%s/embed-%s.html' % (host, media_id)
@@ -53,6 +59,6 @@ class TusfilesResolver(UrlResolver):
             return r.groups()
         else:
             return False
-
+    
     def valid_url(self, url, host):
         return re.search(self.pattern, url) or self.name in host

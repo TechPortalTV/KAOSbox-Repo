@@ -18,16 +18,22 @@
 
 import re
 import xml.etree.ElementTree as ET
+from t0mm0.common.net import Net
 from urlresolver import common
-from urlresolver.resolver import UrlResolver, ResolverError
+from urlresolver.plugnplay.interfaces import UrlResolver
+from urlresolver.plugnplay.interfaces import PluginSettings
+from urlresolver.plugnplay import Plugin
 
-class MediaPlayBoxResolver(UrlResolver):
+class MediaPlayBoxResolver(Plugin, UrlResolver, PluginSettings):
+    implements = [UrlResolver]
     name = "MediaPlayBox"
     domains = ["mediaplaybox.com"]
     pattern = '(?://|\.)(mediaplaybox\.com)/video/(.*)'
 
     def __init__(self):
-        self.net = common.Net()
+        p = self.get_setting('priority') or 100
+        self.priority = int(p)
+        self.net = Net()
         self.net.set_user_agent(common.IE_USER_AGENT)
         self.headers = {'User-Agent': common.IE_USER_AGENT}
 
@@ -47,8 +53,8 @@ class MediaPlayBoxResolver(UrlResolver):
                 result = root.find('./video/src')
                 if result is not None:
                     return result.text
-
-        raise ResolverError('Unable to find mediaplaybox video')
+        
+        raise UrlResolver.ResolverError('Unable to find mediaplaybox video')
 
     def get_url(self, host, media_id):
         return 'http://mediaplaybox.com/video/%s' % media_id
@@ -59,6 +65,6 @@ class MediaPlayBoxResolver(UrlResolver):
             return r.groups()
         else:
             return False
-
+    
     def valid_url(self, url, host):
         return re.search(self.pattern, url) or self.name in host

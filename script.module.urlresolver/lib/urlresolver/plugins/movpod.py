@@ -17,16 +17,21 @@
 """
 
 import re
-from urlresolver import common
-from urlresolver.resolver import UrlResolver, ResolverError
+from t0mm0.common.net import Net
+from urlresolver.plugnplay.interfaces import UrlResolver
+from urlresolver.plugnplay.interfaces import PluginSettings
+from urlresolver.plugnplay import Plugin
 
-class MovpodResolver(UrlResolver):
+class MovpodResolver(Plugin, UrlResolver, PluginSettings):
+    implements = [UrlResolver, PluginSettings]
     name = "movpod"
     domains = ["movpod.net", "movpod.in"]
     pattern = '(?://|\.)(movpod\.(?:net|in))/(?:embed-)?([0-9a-zA-Z]+)'
 
     def __init__(self):
-        self.net = common.Net()
+        p = self.get_setting('priority') or 100
+        self.priority = int(p)
+        self.net = Net()
 
     def get_media_url(self, host, media_id):
         web_url = self.get_url(host, media_id)
@@ -37,13 +42,13 @@ class MovpodResolver(UrlResolver):
         form_values = {}
         for i in re.finditer('<input type="hidden" name="(.+?)" value="(.+?)">', html):
             form_values[i.group(1)] = i.group(2)
-
+            
         html = self.net.http_POST(post_url, form_data=form_values).content
         r = re.search('file: "http(.+?)"', html)
         if r:
             return "http" + r.group(1)
         else:
-            raise ResolverError('Unable to resolve Movpod Link')
+            raise UrlResolver.ResolverError('Unable to resolve Movpod Link')
 
     def get_url(self, host, media_id):
         return 'http://movpod.in/%s' % (media_id)
@@ -54,6 +59,6 @@ class MovpodResolver(UrlResolver):
             return r.groups()
         else:
             return False
-
+    
     def valid_url(self, url, host):
         return re.search(self.pattern, url) or self.name in host

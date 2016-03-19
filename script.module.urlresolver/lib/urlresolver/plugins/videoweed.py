@@ -17,16 +17,22 @@
 """
 
 import re
+from t0mm0.common.net import Net
 from urlresolver import common
-from urlresolver.resolver import UrlResolver, ResolverError
+from urlresolver.plugnplay.interfaces import UrlResolver
+from urlresolver.plugnplay.interfaces import PluginSettings
+from urlresolver.plugnplay import Plugin
 
-class VideoweedResolver(UrlResolver):
+class VideoweedResolver(Plugin, UrlResolver, PluginSettings):
+    implements = [UrlResolver, PluginSettings]
     name = 'videoweed.es'
     domains = ['bitvid.sx', 'videoweed.es', 'videoweed.com']
     pattern = '(?://|\.)(bitvid.sx|videoweed.es|videoweed.com)/(?:mobile/video\.php\?id=|video/|embed/\?v=|embed\.php\?v=|file/)([0-9a-z]+)'
 
     def __init__(self):
-        self.net = common.Net()
+        p = self.get_setting('priority') or 100
+        self.priority = int(p)
+        self.net = Net()
 
     def get_media_url(self, host, media_id):
         web_url = self.get_url(host, media_id)
@@ -49,12 +55,12 @@ class VideoweedResolver(UrlResolver):
             if r:
                 stream_url = r.group(1)
             else:
-                raise ResolverError('File Not Found or removed')
+                raise UrlResolver.ResolverError('File Not Found or removed')
 
         return stream_url
 
     def get_url(self, host, media_id):
-        return 'http://www.bitvid.sx/embed/?v=%s' % media_id
+        return 'http://embed.bitvid.sx/embed.php?v=%s' % media_id
 
     def get_host_and_id(self, url):
         r = re.search(self.pattern, url)

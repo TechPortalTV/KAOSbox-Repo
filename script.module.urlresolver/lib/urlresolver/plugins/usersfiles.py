@@ -17,17 +17,23 @@
 """
 
 import re
+from t0mm0.common.net import Net
 from lib import jsunpack
 from urlresolver import common
-from urlresolver.resolver import UrlResolver, ResolverError
+from urlresolver.plugnplay.interfaces import UrlResolver
+from urlresolver.plugnplay.interfaces import PluginSettings
+from urlresolver.plugnplay import Plugin
 
-class UsersFilesResolver(UrlResolver):
+class UsersFilesResolver(Plugin, UrlResolver, PluginSettings):
+    implements = [UrlResolver]
     name = "UsersFiles"
     domains = ["usersfiles.com"]
     pattern = '(?://|\.)(usersfiles\.com)/(?:embed-)?([0-9a-zA-Z/]+)'
 
     def __init__(self):
-        self.net = common.Net()
+        p = self.get_setting('priority') or 100
+        self.priority = int(p)
+        self.net = Net()
         self.net.set_user_agent(common.IE_USER_AGENT)
         self.headers = {'User-Agent': common.IE_USER_AGENT}
 
@@ -45,7 +51,7 @@ class UsersFilesResolver(UrlResolver):
             if stream_url:
                 return stream_url[0]
 
-        raise ResolverError('Unable to find userfiles video')
+        raise UrlResolver.ResolverError('Unable to find userfiles video')
 
     def get_url(self, host, media_id):
         return 'http://usersfiles.com/%s' % media_id

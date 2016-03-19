@@ -17,16 +17,21 @@
 """
 
 import re
-from urlresolver import common
-from urlresolver.resolver import UrlResolver, ResolverError
+from t0mm0.common.net import Net
+from urlresolver.plugnplay.interfaces import UrlResolver
+from urlresolver.plugnplay.interfaces import PluginSettings
+from urlresolver.plugnplay import Plugin
 
-class NowvideoResolver(UrlResolver):
+class NowvideoResolver(Plugin, UrlResolver, PluginSettings):
+    implements = [UrlResolver, PluginSettings]
     name = "nowvideo"
     domains = ['nowvideo.eu', 'nowvideo.ch', 'nowvideo.sx', 'nowvideo.co', 'nowvideo.li']
     pattern = '(?://|\.)(nowvideo\.(?:eu|ch|sx|co|li))/(?:video/|embed\.php\?v=)([A-Za-z0-9]+)'
 
     def __init__(self):
-        self.net = common.Net()
+        p = self.get_setting('priority') or 100
+        self.priority = int(p)
+        self.net = Net()
 
     def get_media_url(self, host, media_id):
         web_url = self.get_url(host, media_id)
@@ -49,7 +54,7 @@ class NowvideoResolver(UrlResolver):
             if r:
                 stream_url = r.group(1)
             else:
-                raise ResolverError('File Not Found or removed')
+                raise UrlResolver.ResolverError('File Not Found or removed')
 
         return stream_url
 
@@ -62,6 +67,6 @@ class NowvideoResolver(UrlResolver):
             return r.groups()
         else:
             return False
-
+    
     def valid_url(self, url, host):
         return re.search(self.pattern, url) or self.name in host

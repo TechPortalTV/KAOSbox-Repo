@@ -19,16 +19,22 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 import re
 import urllib
 import urllib2
+from t0mm0.common.net import Net
 from urlresolver import common
-from urlresolver.resolver import UrlResolver, ResolverError
+from urlresolver.plugnplay.interfaces import UrlResolver
+from urlresolver.plugnplay.interfaces import PluginSettings
+from urlresolver.plugnplay import Plugin
 
-class SharerepoResolver(UrlResolver):
+class SharerepoResolver(Plugin, UrlResolver, PluginSettings):
+    implements = [UrlResolver, PluginSettings]
     name = "sharerepo"
     domains = ["sharerepo.com"]
     pattern = '(?://|\.)(sharerepo\.com)(?:/f)?/([0-9a-zA-Z]+)'
 
     def __init__(self):
-        self.net = common.Net()
+        p = self.get_setting('priority') or 100
+        self.priority = int(p)
+        self.net = Net()
 
     def get_media_url(self, host, media_id):
         web_url = self.get_url(host, media_id)
@@ -45,13 +51,13 @@ class SharerepoResolver(UrlResolver):
                 html = self.net.http_GET(web_url, headers=headers).content
             else:
                 raise
-
+            
         link = re.search("file\s*:\s*'([^']+)", html)
         if link:
-            common.log_utils.log_debug('ShareRepo Link Found: %s' % link.group(1))
+            common.addon.log_debug('ShareRepo Link Found: %s' % link.group(1))
             return link.group(1) + '|' + urllib.urlencode({'User-Agent': common.IE_USER_AGENT})
         else:
-            raise ResolverError('Unable to resolve ShareRepo Link')
+            raise UrlResolver.ResolverError('Unable to resolve ShareRepo Link')
 
     def get_url(self, host, media_id):
         return 'http://sharerepo.com/f/%s' % media_id
@@ -62,6 +68,6 @@ class SharerepoResolver(UrlResolver):
             return r.groups()
         else:
             return False
-
+    
     def valid_url(self, url, host):
         return re.search(self.pattern, url) or self.name in host

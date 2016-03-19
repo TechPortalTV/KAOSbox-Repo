@@ -18,17 +18,22 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 import re
 import base64
-from urlresolver import common
-from urlresolver.resolver import UrlResolver
+from t0mm0.common.net import Net
+from urlresolver.plugnplay.interfaces import UrlResolver
+from urlresolver.plugnplay.interfaces import PluginSettings
+from urlresolver.plugnplay import Plugin
 
-class SpeedVideoResolver(UrlResolver):
+class SpeedVideoResolver(Plugin, UrlResolver, PluginSettings):
+    implements = [UrlResolver, PluginSettings]
     name = "speedvideo"
     domains = ["speedvideo.net"]
     domain = "speedvideo.net"
     pattern = '(?://|\.)(speedvideo\.net)/(?:embed-)?([0-9a-zA-Z]+)'
 
     def __init__(self):
-        self.net = common.Net()
+        p = self.get_setting('priority') or 100
+        self.priority = int(p)
+        self.net = Net()
 
     def get_media_url(self, host, media_id):
         web_url = self.get_url(host, media_id)
@@ -53,6 +58,6 @@ class SpeedVideoResolver(UrlResolver):
             return r.groups()
         else:
             return False
-
+    
     def valid_url(self, url, host):
         return re.search(self.pattern, url) or self.name in host

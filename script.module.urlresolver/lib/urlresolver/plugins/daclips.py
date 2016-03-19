@@ -17,16 +17,21 @@
 """
 
 import re
-from urlresolver import common
-from urlresolver.resolver import UrlResolver, ResolverError
+from t0mm0.common.net import Net
+from urlresolver.plugnplay.interfaces import UrlResolver
+from urlresolver.plugnplay.interfaces import PluginSettings
+from urlresolver.plugnplay import Plugin
 
-class DaclipsResolver(UrlResolver):
+class DaclipsResolver(Plugin, UrlResolver, PluginSettings):
+    implements = [UrlResolver, PluginSettings]
     name = "daclips"
-    domains = ["daclips.in", "daclips.com"]
+    domains = [ "daclips.in", "daclips.com" ]
     pattern = '(?://|\.)(daclips\.(?:in|com))/(?:embed-)?([0-9a-zA-Z]+)'
 
     def __init__(self):
-        self.net = common.Net()
+        p = self.get_setting('priority') or 100
+        self.priority = int(p)
+        self.net = Net()
 
     def get_media_url(self, host, media_id):
         web_url = self.get_url(host, media_id)
@@ -35,7 +40,7 @@ class DaclipsResolver(UrlResolver):
         html = resp.content
         r = re.findall(r'<span class="t" id="head_title">404 - File Not Found</span>', html)
         if r:
-            raise ResolverError('File Not Found or removed')
+            raise UrlResolver.ResolverError('File Not Found or removed')
         post_url = resp.get_url()
         form_values = {}
         for i in re.finditer('<input type="hidden" name="(.+?)" value="(.+?)">', html):
@@ -45,8 +50,8 @@ class DaclipsResolver(UrlResolver):
         if r:
             return "http" + r.group(1)
         else:
-            raise ResolverError('Unable to resolve Daclips link')
-
+            raise UrlResolver.ResolverError('Unable to resolve Daclips link')
+        
     def get_url(self, host, media_id):
         return 'http://daclips.in/%s' % (media_id)
 
@@ -56,6 +61,6 @@ class DaclipsResolver(UrlResolver):
             return r.groups()
         else:
             return False
-
+    
     def valid_url(self, url, host):
         return re.search(self.pattern, url) or self.name in host

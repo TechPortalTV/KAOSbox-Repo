@@ -18,16 +18,21 @@
 
 
 import re
-from urlresolver import common
-from urlresolver.resolver import UrlResolver, ResolverError
+from t0mm0.common.net import Net
+from urlresolver.plugnplay.interfaces import UrlResolver
+from urlresolver.plugnplay.interfaces import PluginSettings
+from urlresolver.plugnplay import Plugin
 
-class ZstreamResolver(UrlResolver):
+class ZstreamResolver(Plugin, UrlResolver, PluginSettings):
+    implements = [UrlResolver, PluginSettings]
     name = 'zstream.to'
-    domains = ['zstream.to']
+    domains = [ 'zstream.to' ]
     pattern = '(?://|\.)(zstream\.to)/(?:embed-)?([0-9a-zA-Z]+)'
 
     def __init__(self):
-        self.net = common.Net()
+        p = self.get_setting('priority') or 100
+        self.priority = int(p)
+        self.net = Net()
 
     def get_media_url(self, host, media_id):
         web_url = self.get_url(host, media_id)
@@ -39,8 +44,8 @@ class ZstreamResolver(UrlResolver):
 
         if stream_url:
             return stream_url[-1]
-
-        raise ResolverError('File Not Found or removed')
+            
+        raise UrlResolver.ResolverError('File Not Found or removed')
 
     def get_url(self, host, media_id):
         return 'http://zstream.to/embed-%s.html' % media_id

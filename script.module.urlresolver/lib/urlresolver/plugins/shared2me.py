@@ -17,16 +17,21 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 """
 
 import re
-from urlresolver import common
-from urlresolver.resolver import UrlResolver, ResolverError
+from t0mm0.common.net import Net
+from urlresolver.plugnplay.interfaces import UrlResolver
+from urlresolver.plugnplay.interfaces import PluginSettings
+from urlresolver.plugnplay import Plugin
 
-class Shared2meResolver(UrlResolver):
+class Shared2meResolver(Plugin, UrlResolver, PluginSettings):
+    implements = [UrlResolver, PluginSettings]
     name = 'shared2.me'
-    domains = ['shared2.me']
+    domains = [ 'shared2.me' ]
     pattern = '(?://|\.)(shared2\.me)/(?:play|frame)/([0-9a-zA-Z]+)'
 
     def __init__(self):
-        self.net = common.Net()
+        p = self.get_setting('priority') or 100
+        self.priority = int(p)
+        self.net = Net()
 
     def get_media_url(self, host, media_id):
         web_url = self.get_url(host, media_id)
@@ -35,8 +40,8 @@ class Shared2meResolver(UrlResolver):
 
         stream_url = re.compile('path *: *"(http.+?)"').findall(html)[-1]
         return stream_url
-
-        raise ResolverError('File Not Found or removed')
+            
+        raise UrlResolver.ResolverError('File Not Found or removed')
 
     def get_url(self, host, media_id):
         return 'http://shared2.me/frame/%s' % media_id
@@ -47,6 +52,6 @@ class Shared2meResolver(UrlResolver):
             return r.groups()
         else:
             return False
-
+    
     def valid_url(self, url, host):
         return re.search(self.pattern, url) or self.name in host

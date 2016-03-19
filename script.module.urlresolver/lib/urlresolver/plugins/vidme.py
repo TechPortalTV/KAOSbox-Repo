@@ -17,16 +17,21 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 '''
 
 import re
-from urlresolver import common
-from urlresolver.resolver import UrlResolver, ResolverError
+from t0mm0.common.net import Net
+from urlresolver.plugnplay.interfaces import UrlResolver
+from urlresolver.plugnplay.interfaces import PluginSettings
+from urlresolver.plugnplay import Plugin
 
-class VidMeResolver(UrlResolver):
+class VidMeResolver(Plugin, UrlResolver, PluginSettings):
+    implements = [UrlResolver, PluginSettings]
     name = "vid.me"
     domains = ["vid.me"]
     pattern = '(?://|\.)(vid\.me)/(?:e/)?([0-9A-Za-z]+)'
 
     def __init__(self):
-        self.net = common.Net()
+        p = self.get_setting('priority') or 100
+        self.priority = int(p)
+        self.net = Net()
 
     def get_media_url(self, host, media_id):
         web_url = self.get_url(host, media_id)
@@ -36,7 +41,7 @@ class VidMeResolver(UrlResolver):
         if r:
             return r.group(1).replace('&amp;', '&')
 
-        raise ResolverError('File Not Found or removed')
+        raise UrlResolver.ResolverError('File Not Found or removed')
 
     def get_url(self, host, media_id):
         return 'http://vid.me/e/%s' % media_id
