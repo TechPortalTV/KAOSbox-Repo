@@ -1,33 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addons>
-<addon id="plugin.audio.tuneinradio" name="TuneIn Radio" version="3.0.0" provider-name="brianhornsby">
-	<requires>
-		<import addon="xbmc.python" version="2.1.0"/>
-		<import addon="script.module.simplejson" version="2.0.10"/>
-	</requires>
-	<extension point="xbmc.python.pluginsource" library="default.py">
-		<provides>audio</provides>
-	</extension>
-	<extension point="xbmc.addon.metadata">
-		<platform>all</platform>
-		<summary lang="bg">Радио TuneIn</summary>
-		<summary lang="en">TuneIn Radio</summary>
-		<summary lang="es">TuneIn Radio</summary>
-		<description lang="bg">Радио TuneIn е безплатна услуга, която ви позволява да слушате всичко, независимо къде се намирате. Каквото желаете - музика, спорт или новини. Радио TuneIn предлага над 50 000 станции от които да избирате. Можете да намерите местните станции или да откриете нови станции от целия свят. Радио TuneIn ви отвежда точно където желаете да сте.</description>
-		<description lang="en">TuneIn Radio is a free service that lets you listen to anything in the world from wherever you are. Whether you want to hear music, sports, news or current events. TuneIn Radio offers over 50,000 stations for you to choose from. From finding local stations to discovering new stations from around the world, TuneIn Radio brings you to where you want to be.</description>
-		<description lang="es">TuneIn Radio es un servicio gratuito que te permite escuchar cualquier cosa del mundo desde donde te encuentres. Si deseas escuchar música, deportes, noticias o eventos actuales. TuneIn Radio ofrece más de 50,000 estaciones radiales para escoger, desde estaciones locales hasta descubrir nuevas estaciones alrededor del mundo, TuneIn Radio te lleva a donde tu quieras estar.</description>
-		<language></language>
-		<license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
-		<forum>http://forum.kodi.tv/showthread.php?tid=119315</forum>
-		<website>http://brianhornsby.com/kodi_addons/tuneinradio</website>
-		<source>https://github.com/brianhornsby/plugin.audio.tuneinradio</source>
-	</extension>
-</addon>
-
-<addon id="plugin.program.kaosboxinstall" name="KAOSbox Install" version="3.0.6" provider-name="KAOSbox">
+<addon id="plugin.program.kaosboxinstall" name="KAOSbox Install" version="3.0.7" provider-name="KAOSbox">
   <requires>
     	<import addon="xbmc.python" version="2.1.0"/>
 	<import addon="script.module.addon.common" />
+	<import addon="plugin.video.saltshd.lite" />
   </requires>
   <extension point="xbmc.python.pluginsource" library="default.py">
         <provides>executable</provides>
@@ -265,6 +242,27 @@
   </extension>
 </addon>
 
+<!--suppress ALL -->
+<addon id="plugin.video.saltshd.lite" version="1.0.137" name="Salts HD Lite" provider-name="tknorris">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.urlresolver" version="3.0.0"/>
+		<import addon="repository.xvbmc" version="3.0.1"/>
+        <import addon="script.module.myconnpy" version="1.1.6" />
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+    </extension>
+     <extension point="xbmc.service" library="service.py" start="startup"/>
+    <extension point="xbmc.addon.metadata">
+        <summary>Stream video from many difference sources</summary>
+        <description>This is the mod version of Salts by Scott Marten.</description>
+        <platform>all</platform>
+        <website>repository.xvbmc</website>
+		<forum>https://www.facebook.com/groups/XvBMCnederland/</forum>
+	</extension>
+</addon>
+
 <addon id="plugin.video.stuktv"
 	name="stuk.tv"
 	version="3.0.1"
@@ -324,57 +322,6 @@
   </extension>
 </addon>
 
-<addon id="plugin.video.youtube" name="YouTube" version="5.1.20.4" provider-name="bromix">
-	<requires>
-		<import addon="xbmc.python" version="2.1.0"/>
-	</requires>
-	<extension point="xbmc.python.pluginsource" library="default.py">
-		<provides>video</provides>
-	</extension>
-	<extension point="xbmc.addon.metadata">
-        <summary lang="en">Plugin for YouTube</summary>
-        <description lang="en">YouTube is a one of the biggest video-sharing websites of the world.</description>
-		<summary lang="de">Plugin für YouTube</summary>
-        <description lang="de">YouTube ist ein eines der größten Video-Sharing-Websites der Welt.</description>
-        <summary lang="pl">Wtyczka YouTube</summary>
-        <description lang="pl">YouTube jest jednym z największych na świecie serwisów udostępniania wideo.</description>
-		<summary lang="hu">Kiegészítő  a YouTube-hoz</summary>
-        <description lang="hu">A YouTube a világ egyik legnagyobb videómegosztó weboldala.</description>
-        <summary lang="es">Plugin para YouTube</summary>
-        <description lang="es">YouTube es un uno de los mayores sitios web de intercambio de vídeos del mundo.</description>
-        <summary lang="ru">Видеодополнение YouTube</summary>
-        <description lang="ru">Данное дополнение позволяет находить и смотреть видео на всеми любимом сайте.</description>
-        <summary lang="fr">Plugin pour YouTube</summary>
-        <description lang="fr">YouTube est l'un des plus grands sites de partage vidéos du monde.</description>
-        <summary lang="zh">YouTube附加元件</summary>
-        <description lang="zh">「Youtube」是全世界最大的影片分享網站</description>
-        <summary lang="bg">Добавка за YouTube</summary>
-        <description lang="bg">YouTube е един от най-големите уеб сайтове за споделяне на видео в целия свят.</description>
-		<disclaimer lang="en"></disclaimer>
-		<language></language>
-		<platform>all</platform>
-		<license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
-		<forum>http://forum.kodi.tv/showthread.php?tid=200735</forum>
-		<website>http://www.youtube.com</website>
-		<email>bromix at gmx dot net</email>
-		<source>https://github.com/bromix/plugin.video.youtube</source>
-	</extension>
-</addon>
-
-<addon id="repository.awesome" name="Awesome repo" version="0.0.1" provider-name="Awesome">
-	<extension point="xbmc.addon.repository" name="Awesome repo">
-		<info compressed="false">http://raw.github.com/AwesomeStreams/AwesomeStreams/master/addons.xml</info>
-		<checksum>http://raw.github.com/AwesomeStreams/AwesomeStreams/master/addons.xml.md5</checksum>
-		<datadir zip="true">http://raw.github.com/AwesomeStreams/AwesomeStreams/master</datadir>
-	</extension>
-	<extension point="xbmc.addon.metadata">
-		<summary>The Official Awesome repository</summary>
-		<description>This repository contains addons with live IPTV streams.</description>
-		<disclaimer>The owners and submitters to this repository do not host or distribute any of the content displayed by these addons nor do they have any affiliation with the content providers.</disclaimer>
-		<platform>all</platform>
-	</extension>
-</addon>
-
 <addon id="script.audio.spotimc" version="1.0-beta5" name="Spotimc" provider-name="Mikel Azkolain">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
@@ -407,71 +354,6 @@
       <description lang="en">Tools for the KAOSbox</description>
       <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
   </extension>
-</addon>
-
-<addon id="script.module.trakt"
-       name="trakt.py"
-       version="2.5.1"
-       provider-name="Fuzeman, Razzeee">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-	<import addon="script.module.requests" version="2.7.0"/>
-	<import addon="script.module.six" version="1.9.0"/>
-	<import addon="script.module.arrow" version="0.6.0"/>
-  </requires>
-  <extension point="xbmc.python.module"
-             library="lib" />
-  <extension point="xbmc.addon.metadata">
-    <summary>Python interface for the trakt.tv API</summary>
-    <description>Packed for Kodi from https://github.com/fuzeman/trakt.py</description>
-    <platform>all</platform>
-    <language></language>
-    <license>MIT</license>
-    <forum></forum>
-    <website>https://github.com/fuzeman/trakt.py</website>
-    <source>https://github.com/Razzeee/script.module.trakt</source>
-    <email></email>
-  </extension>
-</addon>
-
-<addon id="script.module.urlresolver"
-     name="URLResolver"
-     version="2.10.13~beta3"
-     provider-name="Eldorado">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0" />
-    <import addon="script.module.t0mm0.common" version="2.0.0"/>
-  </requires>
-  <extension point="xbmc.python.module" library="lib" />
-  <extension point="xbmc.addon.metadata">
-    <platform>all</platform>
-    <summary lang="en">Resolve common video host URL's to be playable in XBMC/Kodi.</summary>
-    <description lang="en">Resolve common video host URL's to be playable in XBMC/Kodi, simplify addon development of video plugins requiring multi video hosts.</description>
-  </extension>
-</addon>
-
-<addon id="service.subtitles.addic7ed"
-       name="Addic7ed.com"
-       version="5.0.1"
-       provider-name="CFlannagan">
-    <requires>
-        <import addon="xbmc.python" version="2.14.0"/>
-        <import addon="script.module.beautifulsoup" version="3.2.1"/>
-    </requires>
-    <extension point="xbmc.subtitle.module"
-               library="service.py"/>
-    <extension point="xbmc.addon.metadata">
-        <summary lang="en">Get subtitles from Addic7ed.com</summary>
-        <description lang="en">Description for Addic7ed to come</description>
-        <disclaimer lang="en"/>
-        <platform>all</platform>
-        <language/>
-        <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
-        <forum>http://forum.xbmc.org/showthread.php?tid=184854</forum>
-        <website/>
-        <email/>
-        <source>https://github.com/cflannagan/service.subtitles.addic7ed</source>
-    </extension>
 </addon>
 
 <addon
