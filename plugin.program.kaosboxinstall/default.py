@@ -1,1 +1,335 @@
-exec("import re;import base64");exec((lambda p,y:(lambda o,b,f:re.sub(o,b,f))(r"([0-9a-f]+)",lambda m:p(m,y),base64.b64decode("MTUgMWU3LCA0OSwgMjgsIDIzLDExLDNmLDUyLDEzNQoxNSAxNWQKMTUgNjAsMTQKMTUgMTcxCjE1IGI1CjE1IDc1CjE1IGNiCjE1IGI5CjExYyA2Yi43Yy42YiAxNSBhMQoxMWMgNmIuN2MuMTY4IDE1IDE1NgoKCmUyID0gJ2E3LzUuMCAoMzA7IDFlMDsgMzAgMWFjIDUuMTsgODUtMWEzOyAxYzM6MS45LjAuMykgZTAvNjYgYWIvMy4wLjMnCjM0ID0gJzg4LjYzLjMyJwo3OSA9IDQ5LmExKDFhYj0zNCkKYTYgPSAnODguNjMuMzInCjFlNSA9ICJiNyAyYSIKMmIgPSAyOC43ZCgpCjE2OCA9IDE1NigpCjFlMCA9IDc5LjNlKCdkMScpCjIwID0gMWU3LjQoMTEuMjIuMzcoJzI5Oi8vNmYvNTgvJyArIDM0ICwgJzFmLjFkYicpKQoxYmMgPSAxZTcuNCgxMS4yMi4zNygnMjk6Ly82Zi81OC8nICsgMzQsICcxYzEuM2MnKSkKNGIgPSAxZTcuNCgxMS4yMi4zNygnMjk6Ly82Zi81OC8nICsgMzQgKyAnLzEwOS8xZDEvJykpCmE5ID0gIjAuMC4xIgoxNWEgPSAxZTcuNCgnMjk6Ly8xMzAnKQoxNjEgPSAxZTcuNCgnMjk6Ly9iMycpOwoxMjAgPSAiYjcgMmEiICAgICAgICAgICAgCjQ2ID0gIjUwOi8vMTU3LmE1LjFhMiIKMWZiID0gJzUwOi8vJwo5YyA9IFsnODguNjMuMzInLCcxNmYuMTRmLjZiLjdjJywnZjEuMTJlJ10KCjJlIGU3KCk6CgkyMSgnYjcgZDYnLDQ2LDIsNGIrJzFlNC4zYycsMjAsJycpCgkyMSgnN2EgMTIgKDY3KScsJzFiJyw2LDRiKydiNi4zYycsMjAsJycpCgkyMSgnYjcgMThlLzEwYiA4NSAxMzInLDQ2LDMsNGIrJ2YzLjNjJywyMCwnJykKCTIxKCcxYjggYjcnLDQ2LDgsNGIrJ2RhLjNjJywyMCwnJykKCTMxKCc0MCcsICc2OCcpCgoyZSA3YigpOgoJMjEoJzEyIGI3IChjIDE3ZCA4NSAxMWUpJywnNTA6Ly9jYy4xMGUvMTQ0Jyw1LDRiKycxZTQuM2MnLDIwLCcnKQoJMzEoJzQwJywgJzY4JykKCTIxKCcxMiBiNyAoYyAxNmMpJywnNTA6Ly9jYy4xMGUvMTNhJyw1LDRiKycxZTQuM2MnLDIwLCcnKQoJMzEoJzQwJywgJzY4JykKCTIxKCcxMiAxY2YgMTllICgrMTgpJywnNTA6Ly9jYy4xMGUvMTQ4Jyw1LDRiKycxZTQuM2MnLDIwLCcnKQoJMzEoJzQwJywgJzY4JykKCjJlIDViKCk6Cgk4ZCA9IDliKCc1MDovL2NjLjEwZS8xMzMnKS41ZignXDFlZicsJycpLjVmKCdcMWZjJywnJykKCWY5ID0gMTcxLjE0NignMWY5PSIoLis/KSIuKz8xZWE9IiguKz8pIi4rPzFmMj0iKC4rPykiLis/MTc2PSIoLis/KSIuKz9lND0iKC4rPykiJykuMTM4KDhkKQoJNjQgMWY5LDFiLDFhZCwxZiwxMjMgODkgZjk6CgkJMjEoMWY5LDFiLDUsNGIrJzFlNC4zYycsMjAsMTIzKQoJMzEoJzQwJywgJzY4JykKCgoyZSA5YigxYik6CgkxMDQgPSA2MC4xNDIoMWIpCgkxMDQuZWIoJ2QxLTE4YicsICdhNy81LjAgKDMwOyAxZTA7IDMwIDFhYyA1LjE7IDg1LTFhMzsgMWMzOjEuOS4wLjMpIGUwLzY2IGFiLzMuMC4zJykKCTU3ID0gNjAuMTNkKDEwNCkKCThkPTU3LjEyYigpCgk1Ny4yNigpCgkxMyA4ZAoKCiMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIwojIyMjIyMjIDE5MyAxYzYgMTgwICMjIyMjIyMjCiMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIwoKMmUgODcoNjIsNTMpOgogIDE3YiBiMigpOgoJODQ9MTgyCgk0ZT0xCgkzZD01CgkyZSAxMzEoMzMsKjFjYiwqKjE2Myk6CgkgIDFlNy40NSgiYWYoJWQpIiAlICgzMy44NCwgKSkgIyAxMTUgYTIgOTcgMTViIDgzCgkgIDMzLmZkPTI4LjE1MSgzMy44NCkgIyAxZDkgODMKCSAgMWU3LmVlKDFkNikgIyAxYzkgODMgY2IgMWU4IGUzCgkgIDMzLjVhKCkKCTJlIDVhKDMzKToKCSAgMzMuZmQuNjkoMzMuNGUpLjEyMig2MikgIyAxNmUgNjIKCSAgNzogZj0xYjQoNTMpOyA5Nz1mLjEyYigpCgkgIGE0OiA5Nz01MwoJICAzMy5mZC42OSgzMy4zZCkuMTM5KDRjKDk3KSkKCSAgMTMKICBiMigpCgoyZSA4ZigpOgoJODcoJ2I3IDJhJywgJ1tlPTgxXWI3IC0gMTExIGI4IDEwY1svZV1cMWU2IGZhIDE2NSAxZjEtMTJmIDFiNSA4NSAxYmUgZWMgMTRiIDFjNyA1NiAxMDIgMWU5LCBjMy8xODMtMWRjLCA2NSA4NSAzMCBlYyA5ZCFcMWVmXDE3MyAxOTggZWYgMTk1IDE2YiAxNTcuYTUuMWEyJykKCQkKCjJlIGM1KDFmOSwxYiwxMjMpOgoJMjIgPSAxZTcuNCgxMS4yMi4zNygnMjk6Ly82Zi81OCcsJzExYicpKQoJZjUgPSAyOC5hOCgpCglmNS4xNTgoImI3IDJhIiwiZGYgIiwnJywgJzFhNCBjYScpCglkMz0xMS4yMi4zNygyMiwgMWY5KycuMWNkJykKCTc6CgkgICAxMS5kMChkMykKCWE0OgoJICAgMTY0Cgk3NS4xMTQoMWIsIGQzLCBmNSkKCTM5ID0gMWU3LjQoMTEuMjIuMzcoJzI5Oi8vJywnNmYnKSkKCWNiLmVlKDIpCglmNS4xNjAoMCwiIiwgIjFkMyBlYSBmYyAtIDFjMiBjYSIpCgkxOWQgJz09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PScKCTE5ZCAzOQoJMTlkICc9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0nCgliNS4xZGUoZDMsMzksZjUpCgkyYiA9IDI4LjdkKCkKCTJiLjc4KCJiNyAyYSIsICIxZWQgMWM4IDU0IDFiOSBhYSBkOSAxOWYgYyAxNTIgOGIgKDE2IDI2KS4gMTJjIDE2YiAxZWMgMTI0IGMgYWEgNDQuIikKCTk4KCkKCgkgCgoKIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjCiMjIzE3YyAxOTQgY2UgLSAxNDAgMWE4IDE4NyAxZjMgMTY5IyMjIyMjIyMjIyMjIwojIyMjIyMjMWQ4IEAgMTA2IDE1MCMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMKCjJlIDk4KCk6Cgk4MCA9IDI4LjdkKCkuMTc1KCc2ZCAoMThkIDE4MSkgYycsICdjIGVhIGVkIDhiJywgJzE1NCA1NiAxMGY/JywgMTM2PScxY2MsIDExMCcsMTI3PScxZWUsIGI0JykKCTQxIDgwID09IDA6CgkJMTMKCTFjIDgwID09IDE6CgkJMTY0CgkxYSA9IDE3KCkKCTE5ZCAiMTJhOiAiICsgNGMoMWEpCgk0MSAxYSA9PSAnYmYnOiAjIDFkNwoJCTE5ZCAiIyMjIyMjIyMjIyMjICAgNyBiZiAxNiAyNiAgIyMjIyMjIyMjIyMjIyMjIyMiCgkJNzogMTEuMTE2KCcyNyAtOSA3MycpCgkJYTQ6IDE2NAoJCTc6IDExLjExNignMjcgLTkgYycpCgkJYTQ6IDE2NAoJCTJiLjc4KCJbZT04MV1bYl0xMDMgMTY3ISEhWy9lXVsvYl0iLCAiZmIgNTYgYzcgNjEgYzEgZDIgMTA1IGM2IDdlIDEyNCBjIGFhIDQ0LiIsICI2ZCBjIDg2IDExYSBkZSBiMCAxMDEgZGUgOWQgYWEgZTEuIiwnJykKCTFjIDFhID09ICc2ZSc6ICMxN2UKCQkxOWQgIiMjIyMjIyMjIyMjIyAgIDcgNmUgMTYgMjYgICMjIyMjIyMjIyMjIyMjIyMjIgoJCTc6IDExLjExNignMjcgNzMnKQoJCWE0OiAxNjQKCQk3OiAxMS4xMTYoJzI3IGMnKQoJCWE0OiAxNjQKCQk3OiAxMS4xMTYoJzI3IC05IDFlNy4xNjInKQoJCWE0OiAxNjQKCQk3OiAxMS4xMTYoJzI3IC05IDlhLjE2MicpCgkJYTQ6IDE2NAoJCTJiLjc4KCJbZT04MV1bYl0xMDMgMTY3ISEhWy9lXVsvYl0iLCAiZmIgNTYgYzcgNjEgYzEgZDIgMTA1IGM2IDdlIDEyNCBjIGFhIDQ0LiIsICI2ZCBjIDg2IDExYSBkZSBiMCAxMDEgZGUgOWQgYWEgZTEuIiwnJykKCTFjIDFhID09ICc0Myc6ICMgNjUgIAoJCTE5ZCAiIyMjIyMjIyMjIyMjICAgNyA0MyAxNiAyNiAgIyMjIyMjIyMjIyMjIyMjIyMiCgkJNzogMTEuMTE2KCdiYiA3MCAxMjEgMTYtNTUgYzkuMWU3LjlhJykKCQlhNDogMTY0CgkJNzogMTEuMTE2KCdiYiA3MCAxMjEgMTYtNTUgYzkuOWEnKQoJCWE0OiAxNjQKCQk3OiAxMS4xMTYoJ2JiIDcwIDEyMSAxNi01NSBjOS4xZTcuMWU3JykKCQlhNDogMTY0CgkJNzogMTEuMTE2KCdiYiA3MCAxMjEgMTYtNTUgYzkuMWU3JykKCQlhNDogMTY0CQkKCQkyYi43OCgiW2U9MTUzXVtiXWQ3IDE0NSAxMjVbL2VdWy9iXSIsICIxMmMgZGUgMWJkIDE4ZiAxNmIgNTYgOGEgODUgW2U9ODFdW2JdMTc5Wy9lXVsvYl0gY2UgYmUgNjUgYzggODUgMTEyIGNlIikKCTFjIDFhID09ICc0Nyc6ICMgMzAKCQkxOWQgIiMjIyMjIyMjIyMjIyAgIDcgNDcgMTYgMjYgICMjIyMjIyMjIyMjIyMjIyMjIgoJCTc6CgkJCTExLjExNignQDkxIGNmJykKCQkJMTEuMTE2KCdjMCA3My5iYycpCgkJYTQ6IDE2NAoJCTc6CgkJCTExLjExNignQDkxIGNmJykKCQkJMTEuMTE2KCdjMCBjLmJjJykKCQlhNDogMTY0CgkJNzoKCQkJMTEuMTE2KCdAOTEgY2YnKQoJCQkxMS4xMTYoJzk5IC8xYzUgYy5iYyAvZicpCgkJYTQ6IDE2NAoJCTc6CgkJCTExLjExNignQDkxIGNmJykKCQkJMTEuMTE2KCc5OSAvMWM1IDczLmJjIC9mJykKCQlhNDogMTY0CgkJMmIuNzgoIltlPTgxXVtiXTEwMyAxNjchISFbL2VdWy9iXSIsICJmYiA1NiBjNyA2MSBjMSBkMiAxMDUgYzYgN2UgMTI0IGMgYWEgNDQuIiwgIjZkIGMgYmUgZGUgMWIwIDEzNCA4NSAxYTAgYmUgMWQwIGY0IiwnJykKCTk1OiAjMWRmCgkJMTlkICIjIyMjIyMjIyMjIyMgICA3IDFlMiAxNiAyNiAgIyMjIyMjIyMjIyMjIyMjIyMiCgkJNzogMTEuMTE2KCcyNyAxM2UnKQoJCWE0OiAxNjQKCQkxOWQgIiMjIyMjIyMjIyMjIyAgIDcgMTM3IDE2IDI2ICAjIyMjIyMjIyMjIyMjIyMjIyIgIzE5NiAvIDEzYgoJCTc6IDExLjExNignMTJkIGFkIDU1IDlhJykKCQlhNDogMTY0CgkJNzogMTEuMTE2KCcxMmQgYWQgNTUgMWU3JykKCQlhNDogMTY0CgkJMmIuNzgoIltlPTgxXVtiXTE0MyAgISEhWy9lXVsvYl0iLCAiMWY0IGZlXCcxNzEgMTU5IDE5OSAzOCAxZjcgMTdhIGEyIDE2IDI2IiwgIjFkNCBkNC4gMTZhIDE2IDI2IDczL2MgW2U9MWM0XTFmNSAxNWNbL2VdIDE5YiBiZSBhMiAxYWEuIiwiMWUzIDExOS4gIDE4YSAxMDcgMWIxIDFhMSBhMiAxODkvMWMwIDEwNyAxMTEgMTU1IDY0IDFmMCAxOTEgMTAgMTRjLCAxODQgZmUgMWRhIGEyIDE4YyAxYmYuIikJCgoJCQoyZSAxNygpOgoJNDEgMWU3LmRjKCcxMTYuMTcuNDMnKToKCQkxMyAnNDMnCgkxYyAxZTcuZGMoJzExNi4xNy42ZScpOgoJCTEzICc2ZScKCTFjIDFlNy5kYygnMTE2LjE3LjQ3Jyk6CgkJMTMgJzQ3JwoJMWMgMWU3LmRjKCcxMTYuMTcuYmYnKToKCQkxMyAnYmYnCgkxYyAxZTcuZGMoJzExNi4xNy4xMTMnKToKCQkxMyAnMTEzJwoJMWMgMWU3LmRjKCcxMTYuMTcuMTcwJyk6CgkJMTMgJzE3MCcKCQoKMmUgNzYoMWY2KToKCWI5LjRhKCIyNC4yZiAiKzFhZigxZjYpKTsgNWQ9YjkuYWUoMWU1LCIxNTQgNTYgZGUgZmYgNTQgMTkwIDE0ZSAxMDEgNTYgYyA1OT8iKQoJNDEgNWQ6CgkJMzY9NDkuYTEoMWFiPWE2KS5jMignMjInKTsgMzY9MWU3LjQoMzYpOyAKCQkyZD0xMS4yMi4zNygzNiwiLi4iLCIuLiIpOyAyZD0xMS4yMi4xNGEoMmQpOyBiOS40YSgiMjQuMmYgMmQ9IisyZCk7IDRmPTcyCgkJNzoKCQkJNjQgNzQsIDkzLCA3NyA4OSAxMS4xYTYoMmQsMTRkPTcxKToKCQkJCTkzWzpdID0gW2QgNjQgZCA4OSA5MyA0MSBkIDlmIDg5IDljXQoJCQkJNjQgMWY5IDg5IDc3OgoJCQkJCTc6IDExLmQwKDExLjIyLjM3KDc0LDFmOSkpCgkJCQkJYTQ6CgkJCQkJCTQxIDFmOSA5ZiA4OSBbIjExNy5kYiIsImYyLmRiIiwiZjYuZGIiLCIxZTcuNGEiXTogNGY9NzEKCQkJCQkJYjkuNGEoImU2IDk0ICIrNzQrIiAiKzFmOSkKCQkJCTY0IDFmOSA4OSA5MzoKCQkJCQk3OiAxMS4xNzIoMTEuMjIuMzcoNzQsMWY5KSkKCQkJCQlhNDoKCQkJCQkJNDEgMWY5IDlmIDg5IFsiMTI2IiwiMTE4Il06IDRmPTcxCgkJCQkJCWI5LjRhKCJlNiA5NCAiKzc0KyIgIisxZjkpCgkJCTQxIDlmIDRmOiBiOS40YSgiMjQuMmYgMWNlIDFiNyA3NyA1ZSwgZmUgMWQyIDFhZSBhIDE3NCAxNDciKTsgYjkuMzgoMWU1LCI3YSAxMiBkMiBlOCwgNTYgMTI4IGVkIGZhIGY3IGMgNTEgMTVlIGI3IDJhLiA5MiBlZCA1NiA5ZCEiKQoJCQk5NTogYjkuNGEoIjI0LjJmIGQxIDc3IDEwOCA1ZSIpOyBiOS4zOCgxZTUsIjdhIDEyIGQyIGU4LCA1NiAxMjggZWQgZmEgZjcgYyA1MSAxNWUgYjcgMmEuIDkyIGVkIDU2IDlkISIpCgkJYTQ6IGI5LjM4KDFlNSwiMTNjIDE4NSIsIjE5YSAxMjkgMWRkIDlmIDFjYSAxNDEiKTsgMTUgODI7IGI5LjRhKDgyLmY4KCkpOyBiOS40YSgiMjQuMmYgMTVjIDVlIikKCQliOS45MChkNT0iIixmMD0iYyBiNCIsYzQ9NzIpCgk5NTogYjkuMzgoMWU1LCIxZjggZDIgMWI2IDE1ZiA1OSAxNjYuIik7IGI5LjkwKGQ1PSIiLGYwPSIxODgiLGM0PTcyKQoKCQkgIAoJCQoyZSA2YygpOgoJCTZhPVtdCgkJNWM9NTIuNDhbMl0KCQk0MSA3Zig1Yyk+PTI6CgkJCQkxZjY9NTIuNDhbMl0KCQkJCTRkPTFmNi41ZignPycsJycpCgkJCQk0MSAoMWY2WzdmKDFmNiktMV09PScvJyk6CgkJCQkJCTFmNj0xZjZbMDo3ZigxZjYpLTJdCgkJCQkzNT00ZC5lOSgnJicpCgkJCQk2YT17fQoJCQkJNjQgMWRjIDg5IDE4Nig3ZigzNSkpOgoJCQkJCQkxZT17fQoJCQkJCQkxZT0zNVsxZGNdLmU5KCc9JykKCQkJCQkJNDEgKDdmKDFlKSk9PTI6CgkJCQkJCQkJNmFbMWVbMF1dPTFlWzFdCgkJCQkJCQkJCgkJMTMgNmEKCjFmZSA9IDNmLjJjKCcnKQoxZmQgPSAzZi4yYygnYTA9JykKYiA9IDNmLjJjKCcnKQoxZmEgPSAzZi4yYygnJykKMmUgMjEoMWY5LDFiLDFkLDFhZCwxZiwxMjMpOgoJCTFlMT01Mi40OFswXSsiPzFiPSIrMTQuMjUoMWIpKyImMWQ9Iis0YygxZCkrIiYxZjk9IisxNC4yNSgxZjkpKyImMWFkPSIrMTQuMjUoMWFkKSsiJjFmPSIrMTQuMjUoMWYpKyImMTIzPSIrMTQuMjUoMTIzKQoJCTc4PTcxCgkJYTM9MjguMTFkKDFmOSwgMTAwPSJiYS4zYyIsIGFjPTFhZCkKCQlhMy4xM2YoIDExZj0iMTc3IiwgZGQ9eyAiMTdmIjogMWY5LCAiMWIzIjogMTIzIH0gKQoJCWEzLjE2ZCggImJkIiwgMWYgKQoJCTQxIDFkPT01IDoKCQkJNzg9MjMuM2EoY2Q9OWUoNTIuNDhbMV0pLDFiPTFlMSw4Yz1hMyw4ZT03MikKCQk5NToKCQkJNzg9MjMuM2EoY2Q9OWUoNTIuNDhbMV0pLDFiPTFlMSw4Yz1hMyw4ZT03MSkKCQkxMyA3OAoJICAKCQkJCQkgIAoxZjY9NmMoKQoxYj0zYgoxZjk9M2IKMWQ9M2IKMWFkPTNiCjFmPTNiCjEyMz0zYgoKCjc6CgkJMWI9MTQuMTkoMWY2WyIxYiJdKQphNDoKCQkxNjQKNzoKCQkxZjk9MTQuMTkoMWY2WyIxZjkiXSkKYTQ6CgkJMTY0Cjc6CgkJMWFkPTE0LjE5KDFmNlsiMWFkIl0pCmE0OgoJCTE2NAo3OgkJCgkJMWQ9OWUoMWY2WyIxZCJdKQphNDoKCQkxNjQKNzoJCQoJCTFmPTE0LjE5KDFmNlsiMWYiXSkKYTQ6CgkJMTY0Cjc6CQkKCQkxMjM9MTQuMTkoMWY2WyIxMjMiXSkKYTQ6CgkJMTY0CgkJCgkJCjE5ZCA0YygxMjApKyc6ICcrNGMoYTkpCjE5ZCAiMWJhOiAiKzRjKDFkKQoxOWQgIjFkNTogIis0YygxYikKMTlkICIxYTk6ICIrNGMoMWY5KQoxOWQgIjEwYTogIis0YygxYWQpCgoKMmUgMzEoNDIsIDk2KToKCSMgMTZlIDQyIDExZiAxZWIgMTQ5IDE3OCAxOWMgMTkyIDEwNyAxYTcKCTQxIDQyOgoJCTIzLmU1KDllKDUyLjQ4WzFdKSwgNDIpCgk0MSA3OS4zZSgnMWE1LTE5NycpPT0nMWIyJzoKCQkxZTcuNDUoIjEwZC5kOCglMWZmKSIgJSA3OS4zZSg5NikgKQoJCQoKNDEgMWQ9PTNiIDFiYiAxYj09M2IgMWJiIDdmKDFiKTwxOgoJCWU3KCkKCjFjIDFkPT0yOgoJCTdiKCkKCjFjIDFkPT0zOgoJCTViKCkKCQkKCQoxYyAxZD09NToKCQljNSgxZjksMWIsMTIzKQoKMWMgMWQ9PTY6CQkKCTc2KDFmNikKCQoxYyAxZD09ODoKCSAgIDhmKCkKCSAgIAoKCQkKMjMuYjEoOWUoNTIuNDhbMV0pKQ==")))(lambda a,b:b[int("0x"+a.group(1),16)],"0|1|2|3|translatePath|5|6|try|8|9|a|B|Kodi|d|COLOR|f|10|os|Installatie|return|urllib|import|force|platform|18|unquote_plus|myplatform|url|elif|mode|splitparams|fanart|FANART|addDir|path|xbmcplugin|freshstart|quote_plus|close|killall|xbmcgui|special|Install|dialog|decodestring|xbmcPath|def|main_list|Windows|setView|kaosboxinstall|self|addon_id|pairsofparams|addonPath|join|message|addonfolder|addDirectoryItem|None|png|CONTROL_TEXTBOX|getSetting|base64|movies|if|content|android|sluiten|executebuiltin|BASEURL|windows|argv|xbmcaddon|log|ART|str|cleanedparams|CONTROL_LABEL|failed|http|configuratie|sys|announce|instellingen|stop|je|response|addons|installatie|setControls|MAINTENANCE|paramstring|yes_pressed|removed|replace|urllib2|melding|heading|program|for|Android|2008092417|Fabrieksinstellingen|MAIN|getControl|param|addon|get_params|Sluit|linux|home|shell|True|False|XBMC|root|downloader|FRESHSTART|files|ok|ADDON|Schone|BUILDMENU|common|Dialog|gelukt|len|choice|red|traceback|window|WINDOW|en|handmatig|TextBoxes|plugin|in|afstandsbediening|gesloten|listitem|link|isFolder|facebook|add_item|ECHO|Herstart|dirs|removing|else|viewType|text|killxbmc|TASKKILL|kodi|OPEN_URL|EXCLUDES|box|int|not|L2FkZG9ucy50eHQ|Addon|the|liz|except|kaosbox|AddonID|Mozilla|DialogProgress|VERSION|te|Firefox|thumbnailImage|initctl|message_yes_no|ActivateWindow|voeding|endOfDirectory|TextBox|thumbnails|Sluiten|extract|kaosboxschoon|KAOSbox|Entertainment|plugintools|DefaultFolder|adb|exe|Fanart_Image|via|osx|tskill|ziet|getAddonInfo|Hummingboard|folder|WIZARD|niet|deze|Instellingen|org|geduld|time|bit|handle|KODI|off|remove|User|is|lib|unsuccessful|action|Installeren|INSTALLATIE|SetViewMode|installeren|kaosboxinfo|db|getCondVisibility|infoLabels|de|Downloaden|Gecko|halen|USER_AGENT|initialize|escription|setContent|Error|INDEX|klaar|split|wordt|add_header|media|nu|sleep|informatie|title|repository|MyVideos75|kaosboxfix|F4|dp|Textures13|verse|format_exc|match|een|Als|uitgepakt|win|you|standaard|iconImage|van|Raspberry|LET|req|het|COMMUNITY|and|partially|resources|IconImage|Downloads|Redefined|Container|ly|doorgaan|Annuleer|Home|herstart|atv2|download|activate|system|Addons15|userdata|detected|door|packages|from|ListItem|Isengard|type|PATH|am|setLabel|description|om|AFRONDEN|Database|yeslabel|hebt|settings|Platform|read|Klik|sudo|kaosbox2|nonsense|database|__init__|Goodies|1UvWE4J|manager|xbmcvfs|nolabel|raspbmc|findall|setText|1UvWydf|Raspbmc|Problem|urlopen|AppleTV|setInfo|ANDROID|changed|Request|WARNING|24ynhdM|KAOSBOX|compile|install|1pmtLvQ|library|abspath|systeem|seconds|topdown|zetten|module|BUILDS|Window|worden|yellow|Wil|button|Net|www|create|seeing|DBPATH|viewer|NOT|shutil|met|schone|update|TNPATH|bin|kwargs|pass|gratis|gedaan|OP|net|ROOTED|Please|op|Jarvis|setProperty|set|script|ios|re|rmdir|nVoor|clean|yesno|anart|Video|shows|SLUIT|means|class|FORCE|Helix|Linux|Title|BOXES|Close|10147|Cubox|until|found|range|WORKS|Klaar|Sleep|Press|Agent|Apple|Force|Fixes|toets|terug|least|views|POPUP|CLOSE|kijk|OSMC|view|meer|this|Your|exit|more|print|Pack|moet|NIET|both|tv|GB|Even|auto|walk|info|ONLY|Name|menu|id|NT|iconimage|have|repr|task|hold|true|Plot|open|plug|geen|user|Over|goed|Mode|or|ICON|HOME|play|logo|Wake|icon|even|rv|lime|im|TEXT|voor|alle|give|been|args|Nee|zip|All|XXX|ALT|art|now|ZIP|was|URL|500|OSX|LEE|get|see|jpg|i|has|all|ATV|U|u|atv|iOS|kaosboxdownload|AddonTitle|nEindelijk|xbmc|to|Pi|rl|so|OK|Om|Ja|n|at|no|mg|IF|If|DO|params|it|Er|name|F|H|r|T|N|s".split("|")))
+import xbmc, xbmcaddon, xbmcgui, xbmcplugin,os,base64,sys,xbmcvfs
+import shutil
+import urllib2,urllib
+import re
+import extract
+import downloader
+import time
+import plugintools
+from addon.common.addon import Addon
+from addon.common.net import Net
+
+
+USER_AGENT = 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3'
+addon_id = 'plugin.program.kaosboxinstall'
+ADDON = xbmcaddon.Addon(id=addon_id)
+AddonID = 'plugin.program.kaosboxinstall'
+AddonTitle = "KAOSbox Install"
+dialog = xbmcgui.Dialog()
+net = Net()
+U = ADDON.getSetting('User')
+FANART = xbmc.translatePath(os.path.join('special://home/addons/' + addon_id , 'fanart.jpg'))
+ICON = xbmc.translatePath(os.path.join('special://home/addons/' + addon_id, 'icon.png'))
+ART = xbmc.translatePath(os.path.join('special://home/addons/' + addon_id + '/resources/art/'))
+VERSION = "0.0.1"
+DBPATH = xbmc.translatePath('special://database')
+TNPATH = xbmc.translatePath('special://thumbnails');
+PATH = "KAOSbox Install"            
+BASEURL = "http://www.kaosbox.tv"
+H = 'http://'
+EXCLUDES = ['plugin.program.kaosboxinstall','script.module.addon.common','repository.kaosbox2']
+
+def INDEX():
+    addDir('KAOSbox Installeren',BASEURL,2,ART+'kaosboxdownload.png',FANART,'')
+    addDir('Schone Installatie (Fabrieksinstellingen)','url',6,ART+'kaosboxschoon.png',FANART,'')
+    addDir('KAOSbox Fixes/Downloads en Goodies',BASEURL,3,ART+'kaosboxfix.png',FANART,'')
+    addDir('Over KAOSbox',BASEURL,8,ART+'kaosboxinfo.png',FANART,'')
+    setView('movies', 'MAIN')
+
+def BUILDMENU():
+    addDir('Installatie KAOSbox','http://bit.ly/1UvWydf',5,ART+'kaosboxdownload.png',FANART,'')
+    setView('movies', 'MAIN')
+    addDir('Installatie XXX Pack (+18)','http://bit.ly/1pmtLvQ',5,ART+'kaosboxdownload.png',FANART,'')
+    setView('movies', 'MAIN')
+
+def MAINTENANCE():
+    link = OPEN_URL('http://bit.ly/1UvWE4J').replace('\n','').replace('\r','')
+    match = re.compile('name="(.+?)".+?rl="(.+?)".+?mg="(.+?)".+?anart="(.+?)".+?escription="(.+?)"').findall(link)
+    for name,url,iconimage,fanart,description in match:
+        addDir(name,url,5,ART+'kaosboxdownload.png',FANART,description)
+    setView('movies', 'MAIN')
+
+
+def OPEN_URL(url):
+    req = urllib2.Request(url)
+    req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3')
+    response = urllib2.urlopen(req)
+    link=response.read()
+    response.close()
+    return link
+
+
+#################################
+####### POPUP TEXT BOXES ########
+#################################
+
+def TextBoxes(heading,announce):
+  class TextBox():
+    WINDOW=10147
+    CONTROL_LABEL=1
+    CONTROL_TEXTBOX=5
+    def __init__(self,*args,**kwargs):
+      xbmc.executebuiltin("ActivateWindow(%d)" % (self.WINDOW, )) # activate the text viewer window
+      self.win=xbmcgui.Window(self.WINDOW) # get window
+      xbmc.sleep(500) # give window time to initialize
+      self.setControls()
+    def setControls(self):
+      self.win.getControl(self.CONTROL_LABEL).setLabel(heading) # set heading
+      try: f=open(announce); text=f.read()
+      except: text=announce
+      self.win.getControl(self.CONTROL_TEXTBOX).setText(str(text))
+      return
+  TextBox()
+
+def facebook():
+    TextBoxes('KAOSbox Install', '[COLOR=red]KAOSbox - Home Entertainment Redefined[/COLOR]\nEindelijk een gratis no-nonsense plug en play media systeem voor je Raspberry Pi, Hummingboard/Cubox-i, Android en Windows media box!\n\nVoor meer informatie kijk op www.kaosbox.tv')
+        
+
+def WIZARD(name,url,description):
+    path = xbmc.translatePath(os.path.join('special://home/addons','packages'))
+    lib=os.path.join(path, name+'.zip')
+    try:
+       os.remove(lib)
+    except:
+       pass
+    downloader.download(url, lib)
+    if os.path.exists(lib):
+        addonfolder = xbmc.translatePath(os.path.join('special://','home'))
+        time.sleep(2)
+        dp = xbmcgui.DialogProgress()
+        dp.create("Uw systeem wordt nu bijgewerkt.",'', 'Wacht geduldig af tot volgende venster verschijnt.')
+        dp.update(0,"", "ZIP wordt uitgepakt - even geduld")
+        print '======================================='
+        print addonfolder
+        print '======================================='
+        extract.all(lib,addonfolder,dp)
+        dp.close()
+        try: os.remove(lib)
+        except: pass        
+        dialog = xbmcgui.Dialog()
+        dialog.ok("KAOSbox Install", "Om alle instellingen goed te installeren moet Kodi worden gesloten (force close). Klik op OK om Kodi te sluiten.")
+        killxbmc()
+
+     
+
+
+###############################################################
+###FORCE CLOSE KODI - ANDROID ONLY WORKS IF ROOTED#############
+#######LEE @ COMMUNITY BUILDS##################################
+
+def killxbmc():
+    choice = xbmcgui.Dialog().yesno('Sluit (Force Close) Kodi', 'Kodi wordt nu gesloten', 'Wil je doorgaan?', nolabel='Nee, Annuleer',yeslabel='Ja, Sluiten')
+    if choice == 0:
+        return
+    elif choice == 1:
+        pass
+    myplatform = platform()
+    print "Platform: " + str(myplatform)
+    if myplatform == 'osx': # OSX
+        print "############   try osx force close  #################"
+        try: os.system('killall -9 XBMC')
+        except: pass
+        try: os.system('killall -9 Kodi')
+        except: pass
+        dialog.ok("[COLOR=red][B]LET OP!!![/COLOR][/B]", "Als je deze melding ziet is het niet gelukt om Kodi te sluiten.", "Sluit Kodi handmatig door de voeding van de box te halen.",'')
+    elif myplatform == 'linux': #Linux
+        print "############   try linux force close  #################"
+        try: os.system('killall XBMC')
+        except: pass
+        try: os.system('killall Kodi')
+        except: pass
+        try: os.system('killall -9 xbmc.bin')
+        except: pass
+        try: os.system('killall -9 kodi.bin')
+        except: pass
+        dialog.ok("[COLOR=red][B]LET OP!!![/COLOR][/B]", "Als je deze melding ziet is het niet gelukt om Kodi te sluiten.", "Sluit Kodi handmatig door de voeding van de box te halen.",'')
+    elif myplatform == 'android': # Android  
+        print "############   try android force close  #################"
+        try: os.system('adb shell am force-stop org.xbmc.kodi')
+        except: pass
+        try: os.system('adb shell am force-stop org.kodi')
+        except: pass
+        try: os.system('adb shell am force-stop org.xbmc.xbmc')
+        except: pass
+        try: os.system('adb shell am force-stop org.xbmc')
+        except: pass        
+        dialog.ok("[COLOR=yellow][B]INSTALLATIE KAOSBOX AFRONDEN[/COLOR][/B]", "Klik de HOME toets op je afstandsbediening en [COLOR=red][B]SLUIT[/COLOR][/B] KODI via Android Instellingen en herstart KODI")
+    elif myplatform == 'windows': # Windows
+        print "############   try windows force close  #################"
+        try:
+            os.system('@ECHO off')
+            os.system('tskill XBMC.exe')
+        except: pass
+        try:
+            os.system('@ECHO off')
+            os.system('tskill Kodi.exe')
+        except: pass
+        try:
+            os.system('@ECHO off')
+            os.system('TASKKILL /im Kodi.exe /f')
+        except: pass
+        try:
+            os.system('@ECHO off')
+            os.system('TASKKILL /im XBMC.exe /f')
+        except: pass
+        dialog.ok("[COLOR=red][B]LET OP!!![/COLOR][/B]", "Als je deze melding ziet is het niet gelukt om Kodi te sluiten.", "Sluit Kodi via de task manager en NIET via ALT F4",'')
+    else: #ATV
+        print "############   try atv force close  #################"
+        try: os.system('killall AppleTV')
+        except: pass
+        print "############   try raspbmc force close  #################" #OSMC / Raspbmc
+        try: os.system('sudo initctl stop kodi')
+        except: pass
+        try: os.system('sudo initctl stop xbmc')
+        except: pass
+        dialog.ok("[COLOR=red][B]WARNING  !!![/COLOR][/B]", "If you\'re seeing this message it means the force close", "was unsuccessful. Please force close XBMC/Kodi [COLOR=lime]DO NOT[/COLOR] exit via the menu.","iOS detected.  Press and hold both the Sleep/Wake and Home button for at least 10 seconds, until you see the Apple logo.")    
+
+        
+def platform():
+    if xbmc.getCondVisibility('system.platform.android'):
+        return 'android'
+    elif xbmc.getCondVisibility('system.platform.linux'):
+        return 'linux'
+    elif xbmc.getCondVisibility('system.platform.windows'):
+        return 'windows'
+    elif xbmc.getCondVisibility('system.platform.osx'):
+        return 'osx'
+    elif xbmc.getCondVisibility('system.platform.atv2'):
+        return 'atv2'
+    elif xbmc.getCondVisibility('system.platform.ios'):
+        return 'ios'
+    
+
+def FRESHSTART(params):
+    plugintools.log("freshstart.main_list "+repr(params)); yes_pressed=plugintools.message_yes_no(AddonTitle,"Wil je de standaard instellingen terug zetten van je Kodi installatie?")
+    if yes_pressed:
+        addonPath=xbmcaddon.Addon(id=AddonID).getAddonInfo('path'); addonPath=xbmc.translatePath(addonPath); 
+        xbmcPath=os.path.join(addonPath,"..",".."); xbmcPath=os.path.abspath(xbmcPath); plugintools.log("freshstart.main_list xbmcPath="+xbmcPath); failed=False
+        try:
+            for root, dirs, files in os.walk(xbmcPath,topdown=True):
+                dirs[:] = [d for d in dirs if d not in EXCLUDES]
+                for name in files:
+                    try: os.remove(os.path.join(root,name))
+                    except:
+                        if name not in ["Addons15.db","MyVideos75.db","Textures13.db","xbmc.log"]: failed=True
+                        plugintools.log("Error removing "+root+" "+name)
+                for name in dirs:
+                    try: os.rmdir(os.path.join(root,name))
+                    except:
+                        if name not in ["Database","userdata"]: failed=True
+                        plugintools.log("Error removing "+root+" "+name)
+            if not failed: plugintools.log("freshstart.main_list All user files removed, you now have a clean install"); plugintools.message(AddonTitle,"Schone Installatie is klaar, je hebt nu een verse Kodi configuratie met KAOSbox Install. Herstart nu je box!")
+            else: plugintools.log("freshstart.main_list User files partially removed"); plugintools.message(AddonTitle,"Schone Installatie is klaar, je hebt nu een verse Kodi configuratie met KAOSbox Install. Herstart nu je box!")
+        except: plugintools.message(AddonTitle,"Problem found","Your settings has not been changed"); import traceback; plugintools.log(traceback.format_exc()); plugintools.log("freshstart.main_list NOT removed")
+        plugintools.add_item(action="",title="Kodi Sluiten",folder=False)
+    else: plugintools.message(AddonTitle,"Er is geen schone installatie gedaan."); plugintools.add_item(action="",title="Klaar",folder=False)
+
+          
+        
+def get_params():
+        param=[]
+        paramstring=sys.argv[2]
+        if len(paramstring)>=2:
+                params=sys.argv[2]
+                cleanedparams=params.replace('?','')
+                if (params[len(params)-1]=='/'):
+                        params=params[0:len(params)-2]
+                pairsofparams=cleanedparams.split('&')
+                param={}
+                for i in range(len(pairsofparams)):
+                        splitparams={}
+                        splitparams=pairsofparams[i].split('=')
+                        if (len(splitparams))==2:
+                                param[splitparams[0]]=splitparams[1]
+                                
+        return param
+
+N = base64.decodestring('')
+T = base64.decodestring('L2FkZG9ucy50eHQ=')
+B = base64.decodestring('')
+F = base64.decodestring('')
+def addDir(name,url,mode,iconimage,fanart,description):
+        u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)+"&iconimage="+urllib.quote_plus(iconimage)+"&fanart="+urllib.quote_plus(fanart)+"&description="+urllib.quote_plus(description)
+        ok=True
+        liz=xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=iconimage)
+        liz.setInfo( type="Video", infoLabels={ "Title": name, "Plot": description } )
+        liz.setProperty( "Fanart_Image", fanart )
+        if mode==5 :
+            ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=False)
+        else:
+            ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=True)
+        return ok
+      
+                      
+params=get_params()
+url=None
+name=None
+mode=None
+iconimage=None
+fanart=None
+description=None
+
+
+try:
+        url=urllib.unquote_plus(params["url"])
+except:
+        pass
+try:
+        name=urllib.unquote_plus(params["name"])
+except:
+        pass
+try:
+        iconimage=urllib.unquote_plus(params["iconimage"])
+except:
+        pass
+try:        
+        mode=int(params["mode"])
+except:
+        pass
+try:        
+        fanart=urllib.unquote_plus(params["fanart"])
+except:
+        pass
+try:        
+        description=urllib.unquote_plus(params["description"])
+except:
+        pass
+        
+        
+print str(PATH)+': '+str(VERSION)
+print "Mode: "+str(mode)
+print "URL: "+str(url)
+print "Name: "+str(name)
+print "IconImage: "+str(iconimage)
+
+
+def setView(content, viewType):
+    # set content type so library shows more views and info
+    if content:
+        xbmcplugin.setContent(int(sys.argv[1]), content)
+    if ADDON.getSetting('auto-view')=='true':
+        xbmc.executebuiltin("Container.SetViewMode(%s)" % ADDON.getSetting(viewType) )
+        
+
+if mode==None or url==None or len(url)<1:
+        INDEX()
+
+elif mode==2:
+        BUILDMENU()
+
+elif mode==3:
+        MAINTENANCE()
+		
+	
+elif mode==5:
+        WIZARD(name,url,description)
+
+elif mode==6:        
+	FRESHSTART(params)
+	
+elif mode==8:
+       facebook()
+       
+
+        
+xbmcplugin.endOfDirectory(int(sys.argv[1]))
