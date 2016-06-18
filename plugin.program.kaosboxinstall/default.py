@@ -37,7 +37,9 @@ def INDEX():
     setView('movies', 'MAIN')
 
 def BUILDMENU():
-    addDir('Installatie KAOSbox','http://bit.ly/1UvWydf',5,ART+'kaosboxdownload.png',FANART,'')
+    addDir('Installatie KAOSbox (Kodi en SPMC Helix en Isengard)','http://bit.ly/24ynhdM',5,ART+'kaosboxdownload.png',FANART,'')
+    setView('movies', 'MAIN')
+    addDir('Installatie KAOSbox (Kodi en SPMC Jarvis)','http://bit.ly/1UvWydf',5,ART+'kaosboxdownload.png',FANART,'')
     setView('movies', 'MAIN')
     addDir('Installatie XXX Pack (+18)','http://bit.ly/1pmtLvQ',5,ART+'kaosboxdownload.png',FANART,'')
     setView('movies', 'MAIN')
