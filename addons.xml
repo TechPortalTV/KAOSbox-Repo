@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addons>
-<addon id="plugin.program.kaosboxinstall" name="KAOSbox Install" version="3.1.2" provider-name="KAOSbox">
+<addon id="plugin.program.kaosboxinstall" name="KAOSbox Install" version="3.1.3" provider-name="KAOSbox">
   <requires>
     	<import addon="xbmc.python" version="2.1.0"/>
 	<import addon="script.module.addon.common" />
 	<import addon="plugin.video.saltshd.lite" version="1.0.137" />
-	<import addon="plugin.video.md123movies" version="1.1.3" />
-	<import addon="plugin.program.ump" version="0.0.75" />
   </requires>
   <extension point="xbmc.python.pluginsource" library="default.py">
         <provides>executable</provides>
@@ -16,25 +14,6 @@
     <description lang="en">Installeer KAOSbox, Fixes, Add-ons en meer. Voor diverse GRATIS images - kijk op www.kaosbox.tv</description>
     <platform>all</platform>
   </extension>
-</addon>
-
-    <requires>
-		<import addon="xbmc.python" version="2.1.0"/>
-	</requires>
-	<extension library="addon.py" point="xbmc.python.pluginsource">
-		<provides>video audio image</provides>
-	</extension>
-	<extension point="xbmc.addon.metadata">
-		<platform>all</platform>
-		<summary lang="en">UMP : Universal Media Provider</summary>
-		<description lang="en">Universal Media Provider is a framework designed to provide MOVIES, SERIES, ANIMES, MUSIC, ALBUMS, DISCOGRAPHIES, COMICS, MANGA and all various internet media in one addon from various blackholes of the internet</description>
-		<license>GNU General Public License, v2</license>
-		<language/>
-		<forum>https://github.com/boogiekodi/plugin.program.ump/issues</forum>
-		<source/>
-		<website>http://ump.us.to</website>
-		<email>boogiepop@gmx.com</email>
-	</extension>
 </addon>
 
 <addon id="plugin.video.backtothe80s"
@@ -240,24 +219,6 @@
     <description lang="nl">Video's van het officiële kanaal van Kinderen voor Kinderen.</description>
     <platform>all</platform>
     <website>http://www.kaosbox.tv/</website>
-  </extension>
-</addon>
-
-<addon id="plugin.video.md123movies" name="123Movies" version="1.1.3" provider-name="Mucky Duck">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-	<import addon="script.module.addon.common" />
-	<import addon="script.module.requests" />
-	<import addon="repository.mdrepo" />
-  </requires>
-  <extension point="xbmc.python.pluginsource" library="default.py">
-        <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary lang="en">Stream Movies From The 123movies.to WebSite</summary>
-    <description lang="en">Special thanks to [COLOR FF8ABEE2]Open[/COLOR][COLOR FF757677]ELEQ[/COLOR] for the iSearch compatibility modifications</description>
-	<disclaimer lang="en">The author does not host or distribute any of the content displayed by this addon</disclaimer>
-    <platform>all</platform>
   </extension>
 </addon>
 
