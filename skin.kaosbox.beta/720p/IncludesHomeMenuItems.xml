@@ -6,36 +6,48 @@
 			<height>35</height>
 			<texture border="0,0,0,3" flipx="true">HomeSubEnd.png</texture>
 		</control>
-		<control type="button" id="90102">
+		    <control type="button" id="90102">
+			<include>ButtonHomeSubCommonValues</include>
+			<label>Films</label>
+			<onclick>ActivateWindow(10025,&quot;plugin://plugin.video.meta/movies&quot;,return)</onclick>
+			<visible>!Skin.HasSetting(favourite6)</visible>
+		</control>
+		<control type="button" id="90103">
 			<include>ButtonHomeSubCommonValues</include>
 			<label>$INFO[Skin.String(CustomFavourite6.Label)]</label>
 			<onclick>$INFO[Skin.String(CustomFavourite6.Path)]</onclick>
 			<visible>Skin.HasSetting(favourite6)</visible>
 		</control>
-		<control type="button" id="90103">
+		<control type="button" id="90104">
+			<include>ButtonHomeSubCommonValues</include>
+			<label>TV-Series</label>
+			<onclick>ActivateWindow(10025,&quot;plugin://plugin.video.meta/tv&quot;,return)</onclick>
+			<visible>!Skin.HasSetting(favourite7)</visible>
+		</control>
+		<control type="button" id="90105">
 			<include>ButtonHomeSubCommonValues</include>
 			<label>$INFO[Skin.String(CustomFavourite7.Label)]</label>
 			<onclick>$INFO[Skin.String(CustomFavourite7.Path)]</onclick>
 			<visible>Skin.HasSetting(favourite7)</visible>
 		</control>
-		<control type="button" id="90104">
+		<control type="button" id="90106">
 			<include>ButtonHomeSubCommonValues</include>
 			<label>$INFO[Skin.String(CustomFavourite8.Label)]</label>
 			<onclick>$INFO[Skin.String(CustomFavourite8.Path)]</onclick>
 			<visible>Skin.HasSetting(favourite8)</visible>
 		</control>
-		<control type="button" id="90105">
+		<control type="button" id="90107">
 			<include>ButtonHomeSubCommonValues</include>
 			<label>20389</label>
 			<onclick>ActivateWindow(Videos,MusicVideoTitles,return)</onclick>
 			<visible>Library.HasContent(MusicVideos)</visible>
 		</control>
-		<control type="button" id="90106">
+		<control type="button" id="90108">
 			<include>ButtonHomeSubCommonValues</include>
 			<label>744</label>
 			<onclick>ActivateWindow(Videos,Files,return)</onclick>
 		</control>
-		<control type="button" id="90107">
+		<control type="button" id="90109">
 			<include>ButtonHomeSubCommonValues</include>
 			<label>14022</label>
 			<onclick>ActivateWindow(Videos,Root)</onclick>
@@ -163,12 +175,7 @@
 			<onclick>$INFO[Skin.String(CustomFavourite10.Path)]</onclick>
 			<visible>Skin.HasSetting(favourite10)</visible>
 		</control>
-		<control type="button" id="90117">
-			<include>ButtonHomeSubCommonValues</include>
-			<label>Spotify</label>
-			<onclick>RunScript(script.audio.spotimc)</onclick>
-			<visible>!Skin.HasSetting(favourite11)</visible>
-		</control>
+
 		<control type="button" id="90118">
 			<include>ButtonHomeSubCommonValues</include>
 			<label>$INFO[Skin.String(CustomFavourite11.Label)]</label>

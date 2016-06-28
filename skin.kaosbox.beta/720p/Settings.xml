@@ -175,13 +175,7 @@
 						<onclick>ActivateWindow(SystemSettings)</onclick>
 						<icon>-</icon>
 					</item>
-                                        <item id="11">
-						<enable>System.HasAddon(service.openelec.settings)</enable>
-						<visible>System.HasAddon(service.openelec.settings)</visible>
-						<label>OpenELEC Settings</label>
-						<onclick>RunAddon(service.openelec.settings)</onclick>
-						<icon>-</icon>
-					</item>
+                         
 				</content>
 			</control>
 			<control type="image">
