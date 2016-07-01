@@ -18,93 +18,92 @@ icon = local.getAddonInfo('icon')
 ART = xbmc.translatePath(os.path.join('special://home/addons/' + addonID + '/resources/art/'))
 
 channellist=[
-    ("Baby", "baby", ART+'baby.png'),
-    ("Peuter / kleuter", "peuter", ART+'peuter.png'),
-    ("Schoolgaand", "schoolgaand", ART+'schoolgaand.png'),
-    ("Muziek", "muziek", ART+'muziek.png'),
-    ("Engelse Muziek kanalen", "muziekengels", ART+'muziekengels.png'),
-    ("Engelse Explore kanalen", "engels", ART+'engels.png'),
+    ("[COLOR blue]Baby >>[/COLOR]", "baby", ART+'baby.png'),
+    ("[COLOR green]Peuter & Kleuter >>[/COLOR]", "peuter", ART+'peuter.png'),
+    ("[COLOR orange]Schoolgaand >>[/COLOR]", "schoolgaand", ART+'schoolgaand.png'),
+    ("[COLOR red]Muziek >>[/COLOR] ", "muziek", ART+'muziek.png'),
+    ("[COLOR red]Engelse Muziek kanalen >>[/COLOR] ", "muziekengels", ART+'muziekengels.png'),
+    ("[COLOR yellow]Engelse Explore kanalen >>[/COLOR]", "engels", ART+'engels.png'),
     ]
 
-
-baby=[
-     ("[COLOR blue]baby >>[/COLOR] BabyTV", "user/BabyTVNederlands", "http://i.imgur.com/MATAOSW.jpg"),
-     ("[COLOR blue]baby >>[/COLOR] Bumba", "user/BumbaKanaal", "http://i.imgur.com/bqzCBPB.jpg"),
-     ("[COLOR blue]baby >>[/COLOR] Uki", "channel/UCqT1TEgyJyfC7lpM-_6rVRQ", "http://i.imgur.com/KUQD04d.jpg"),
-     ]
-
-peuter=[
-     ("[COLOR green]peuter / kleuter >>[/COLOR] Peuter & Kleuter liedjes", "user/Peuterliedjes", "http://i.imgur.com/oKIZdmK.jpg"),
-     ("[COLOR green]peuter / kleuter >>[/COLOR] Peppa Pig", "channel/UCwNR9UNtcgzmRmNewxjsbmg", "http://i.imgur.com/pV3X12Z.jpg"),
-     ("[COLOR green]peuter / kleuter >>[/COLOR] Nijntje", "user/NIJNTJE", "http://i.imgur.com/f31Qinn.jpg"),
-     ("[COLOR green]peuter / kleuter >>[/COLOR] Mickey Mouse Clubhouse", "playlist/PLal1fCW8NLt_NMPmaAD6DGLsuR6xY5_Ff", "http://i.imgur.com/8YYm91m.jpg"),
-     ("[COLOR green]peuter / kleuter >>[/COLOR] Efteling Sprookjesboom", "user/SprookjesboomTv", "http://i.imgur.com/JVMcRTa.jpg"),
-     ("[COLOR green]peuter / kleuter >>[/COLOR] Efteling Jokie & Jet", "user/JokieEfteling", "http://i.imgur.com/SGVsy1l.jpg"),
-     ("[COLOR green]peuter / kleuter >>[/COLOR] Kabouter Plop", "user/KabouterPlopKanaal", "http://i.imgur.com/bTO5mR4.jpg"),
-     ]
-
-schoolgaand=[
-     ("[COLOR orange]schoolgaand >>[/COLOR] National Geographic Junior", "playlist/PL16F97188D646E450", "http://i.imgur.com/KebLOpC.jpg"),
-     ("[COLOR orange]schoolgaand >>[/COLOR] Walt Disney Studios Nederland", "user/WaltDisneyStudiosNL", "http://i.imgur.com/Ui0lVz5.jpg"),
-     ("[COLOR orange]schoolgaand >>[/COLOR] Prinsessia", "user/prinsessiatv", "http://i.imgur.com/Ou2MNZo.jpg"),
-     ("[COLOR orange]schoolgaand >>[/COLOR] Tita Tovernaar", "user/Titatovenaar", "http://i.imgur.com/nQSmo7I.jpg"),
-     ("[COLOR orange]schoolgaand >>[/COLOR] Efteling Raveleijn", "user/Raveleijn", "http://i.imgur.com/2kuMsEf.jpg"),
-     ("[COLOR orange]schoolgaand >>[/COLOR] Bassie en Adriaan", "user/bassieadriaanchannel", "http://i.imgur.com/REyFIga.jpg"),
-     ("[COLOR orange]schoolgaand >>[/COLOR] Amika", "user/AmikaKanaal", "http://i.imgur.com/XRNctz8.jpg"),
-     ("[COLOR orange]schoolgaand >>[/COLOR] Mega Mindy", "user/MegaMindyKanaal", "http://i.imgur.com/dQ8EQn2.jpg"),
-     ("[COLOR orange]schoolgaand >>[/COLOR] Heidi", "user/HeidiKanaal", "http://i.imgur.com/wX7N9kJ.jpg"),
-     ("[COLOR orange]schoolgaand >>[/COLOR] De Smurfen", "channel/UCeR6gZ7LpF-DB-d0clvwY4w", "http://i.imgur.com/wHGEfVH.jpg"),
-     ("[COLOR orange]schoolgaand >>[/COLOR] Oggy", "channel/UCNEKMkg_DG8eAyR1BNWsSvw", "http://i.imgur.com/fBLojgW.jpg"),
-     ("[COLOR orange]schoolgaand >>[/COLOR] Galaxy Park", "user/GalaxyParkKanaal", "http://i.imgur.com/Fzh5SOj.jpg"),
-     ]
-
-muziek=[
-     ("[COLOR red]muziek >>[/COLOR] Mini Disco", "channel/UCaynZO752koKaWub6EDaApA", "http://i.imgur.com/oKIZdmK.jpg"),
-     ("[COLOR red]muziek >>[/COLOR] Kinderen voor Kinderen", "user/ClubKVK", "http://i.imgur.com/1oho2f6.jpg"),
-     ("[COLOR red]muziek >>[/COLOR] K3", "user/K3Kanaal", "http://i.imgur.com/NDp5gYX.jpg"),
-     ("[COLOR red]muziek >>[/COLOR] Dirk Scheele", "user/DirkScheele", "http://i.imgur.com/fJXADSo.jpg"),
-     ]
-
-muziekengels=[
-     ("[COLOR red]engels (muziek) >>[/COLOR] DisneyStars", "user/DisneyStars", icon),
-     ("[COLOR red]engels (muziek) >>[/COLOR] KIDZ BOP", "user/KidzBopMusicVEVO", icon),
-     ("[COLOR red]engels (muziek) >>[/COLOR] Recess Monkey", "user/recessmonkey3", icon),
-     ("[COLOR red]engels (muziek) >>[/COLOR] childrenlovetosing", "user/childrenlovetosing", icon),
-     ("[COLOR red]engels (muziek) >>[/COLOR] Little Kids Rock", "user/littlekidsrock", icon),
-     ]
-
-engels=[
-     ("[COLOR yellow]engels (explore) >>[/COLOR] Art for Kids", "user/ArtforKidsHub", icon),
-     ("[COLOR yellow]engels (explore) >>[/COLOR] Mister Maker", "user/mistermaker", icon),
-     ("[COLOR yellow]engels (explore) >>[/COLOR] ItsyArtist", "user/itsyartist", icon),
-     ("[COLOR yellow]engels (explore) >>[/COLOR] ArtDaniela", "user/ArtDaniela", icon),
-     ("[COLOR yellow]engels (explore) >>[/COLOR] batteryPOP", "user/batteryPOPkids", icon),
-     ("[COLOR yellow]engels (explore) >>[/COLOR] Play Doh Guide", "user/PeppaPigUK", icon),
-     ("[COLOR yellow]engels (explore) >>[/COLOR] MyFroggyStuff", "user/MyFroggyStuff", icon),
-     ("[COLOR yellow]engels (explore) >>[/COLOR] Muffalo Potato", "user/muffalopotato", icon),
-     ("[COLOR yellow]engels (explore) >>[/COLOR] RosannaPansino", "user/RosannaPansino", icon),
-     ("[COLOR yellow]engels (explore) >>[/COLOR] The Pet Collective", "user/ThePetCollective", icon),
-     ("[COLOR yellow]engels (explore) >>[/COLOR] Cosmic Kids Yoga", "user/CosmicKidsYoga", icon),
-     ("[COLOR yellow]engels (explore) >>[/COLOR] Cute Girls Hairstyles", "user/CuteGirlsHairstyles", icon),
-     ("[COLOR yellow]engels (explore) >>[/COLOR] Madnes64", "user/madnes64", icon),
-     ("[COLOR yellow]engels (explore) >>[/COLOR] MADABOUTLEGO", "user/MADABOUTLEGO", icon),
-     ("[COLOR yellow]engels (explore) >>[/COLOR] Wizz", "channel/UCHzoeK57op5kRPY7baseKaQ", icon),
-     ("[COLOR yellow]engels (explore) >>[/COLOR] ErinsAnimals", "user/ErinsHamsters", icon),
-     ("[COLOR yellow]engels (explore) >>[/COLOR] Brave Wilderness", "user/BreakingTrail", icon),
-     ("[COLOR yellow]engels (explore) >>[/COLOR] Enterprisingengine93", "user/Enterprisingengine93", icon),
-     ("[COLOR yellow]engels (explore) >>[/COLOR] Trains!", "user/sklepowich", icon),
-     ("[COLOR yellow]engels (explore) >>[/COLOR] Fun2draw", "user/Fun2draw", icon),
-     ("[COLOR yellow]engels (explore) >>[/COLOR] NerdECrafter", "user/NerdyCraftsies", icon),
-     ]
-
-
 sublists = {
-    'baby': sorted((i for i in baby)),
-    'peuter': sorted((i for i in peuter)),
-    'schoolgaand': sorted((i for i in schoolgaand)),
-    'muziek': sorted((i for i in muziek)),
-    'muziekengels': sorted((i for i in muziekengels)),
-    'engels': sorted((i for i in engels)),
+'baby':[
+     ("BabyTV", "user/BabyTVNederlands", "http://i.imgur.com/MATAOSW.jpg"),
+     ("Bumba", "user/BumbaKanaal", "http://i.imgur.com/bqzCBPB.jpg"),
+     ("Uki", "channel/UCqT1TEgyJyfC7lpM-_6rVRQ", "http://i.imgur.com/KUQD04d.jpg"),
+     ],
+
+'peuter':[
+     ("Peuter & Kleuter liedjes", "user/Peuterliedjes", "http://i.imgur.com/oKIZdmK.jpg"),
+     ("Peppa Pig", "channel/UCwNR9UNtcgzmRmNewxjsbmg", "http://i.imgur.com/pV3X12Z.jpg"),
+     ("Nijntje", "user/NIJNTJE", "http://i.imgur.com/f31Qinn.jpg"),
+     ("Mickey Mouse Clubhouse", "playlist/PLal1fCW8NLt_NMPmaAD6DGLsuR6xY5_Ff", "http://i.imgur.com/8YYm91m.jpg"),
+     ("Efteling Sprookjesboom", "user/SprookjesboomTv", "http://i.imgur.com/JVMcRTa.jpg"),
+     ("Efteling Jokie & Jet", "user/JokieEfteling", "http://i.imgur.com/SGVsy1l.jpg"),
+     ("Kabouter Plop", "user/KabouterPlopKanaal", "http://i.imgur.com/bTO5mR4.jpg"),
+     ],
+
+'schoolgaand':[
+     ("National Geographic Junior", "playlist/PL16F97188D646E450", "http://i.imgur.com/KebLOpC.jpg"),
+     ("Walt Disney Studios Nederland", "user/WaltDisneyStudiosNL", "http://i.imgur.com/Ui0lVz5.jpg"),
+     ("Prinsessia", "user/prinsessiatv", "http://i.imgur.com/Ou2MNZo.jpg"),
+     ("Tita Tovernaar", "user/Titatovenaar", "http://i.imgur.com/nQSmo7I.jpg"),
+     ("Efteling Raveleijn", "user/Raveleijn", "http://i.imgur.com/2kuMsEf.jpg"),
+     ("Bassie en Adriaan", "user/bassieadriaanchannel", "http://i.imgur.com/REyFIga.jpg"),
+     ("Amika", "user/AmikaKanaal", "http://i.imgur.com/XRNctz8.jpg"),
+     ("Mega Mindy", "user/MegaMindyKanaal", "http://i.imgur.com/dQ8EQn2.jpg"),
+     ("Heidi", "user/HeidiKanaal", "http://i.imgur.com/wX7N9kJ.jpg"),
+     ("De Smurfen", "channel/UCeR6gZ7LpF-DB-d0clvwY4w", "http://i.imgur.com/wHGEfVH.jpg"),
+     ("Oggy", "channel/UCNEKMkg_DG8eAyR1BNWsSvw", "http://i.imgur.com/fBLojgW.jpg"),
+     ("Galaxy Park", "user/GalaxyParkKanaal", "http://i.imgur.com/Fzh5SOj.jpg"),
+     ],
+
+'muziek':[
+     ("Roompot Minidisco", "playlist/PLal1fCW8NLt_pfOpanYsDSWZa9yJ9kHNk", icon),
+     ("Sprookjesboom dansvideo's", "playlist/PLGJ8-PwGgVmQo8jXnMDCnAdaVSwi0yJvP", icon),
+     ("Mini Disco", "channel/UCaynZO752koKaWub6EDaApA", "http://i.imgur.com/oKIZdmK.jpg"),
+     ("Kinderen voor Kinderen", "user/ClubKVK", "http://i.imgur.com/1oho2f6.jpg"),
+     ("K3", "user/K3Kanaal", "http://i.imgur.com/NDp5gYX.jpg"),
+     ("Dirk Scheele", "user/DirkScheele", "http://i.imgur.com/fJXADSo.jpg"),
+     ],
+
+'muziekengels':[
+     ("The Piano Guys", "user/ThePianoGuys", icon),
+     ("Its JoJo Siwa", "channel/UCeV2O_6QmFaaKBZHY3bJgsA", icon),
+     ("MattyBRaps", "user/MattyBRaps", icon),
+     ("Angelic", "user/ThisIsAngelic", icon),
+     ("Haschak Sisters", "playlist/PLTO6a06fTMaZXWABGhYda411fVh15gIIy", icon),
+     ("DisneyStars", "user/DisneyStars", icon),
+     ("KIDZ BOP", "user/KidzBopMusicVEVO", icon),
+     ("Recess Monkey", "user/recessmonkey3", icon),
+     ("childrenlovetosing", "user/childrenlovetosing", icon),
+     ("Little Kids Rock", "user/littlekidsrock", icon),
+     ],
+
+'engels':[
+     ("Art for Kids", "user/ArtforKidsHub", icon),
+     ("Mister Maker", "user/mistermaker", icon),
+     ("ItsyArtist", "user/itsyartist", icon),
+     ("ArtDaniela", "user/ArtDaniela", icon),
+     ("batteryPOP", "user/batteryPOPkids", icon),
+     ("Play Doh Guide", "user/PeppaPigUK", icon),
+     ("MyFroggyStuff", "user/MyFroggyStuff", icon),
+     ("Muffalo Potato", "user/muffalopotato", icon),
+     ("RosannaPansino", "user/RosannaPansino", icon),
+     ("The Pet Collective", "user/ThePetCollective", icon),
+     ("Cosmic Kids Yoga", "user/CosmicKidsYoga", icon),
+     ("Cute Girls Hairstyles", "user/CuteGirlsHairstyles", icon),
+     ("Madnes64", "user/madnes64", icon),
+     ("MADABOUTLEGO", "user/MADABOUTLEGO", icon),
+     ("Wizz", "channel/UCHzoeK57op5kRPY7baseKaQ", icon),
+     ("ErinsAnimals", "user/ErinsHamsters", icon),
+     ("Brave Wilderness", "user/BreakingTrail", icon),
+     ("Enterprisingengine93", "user/Enterprisingengine93", icon),
+     ("Trains!", "user/sklepowich", icon),
+     ("Fun2draw", "user/Fun2draw", icon),
+     ("NerdECrafter", "user/NerdyCraftsies", icon),
+     ],
+
     }
 
 
