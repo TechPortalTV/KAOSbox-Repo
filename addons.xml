@@ -154,7 +154,7 @@
 
 <addon id="plugin.video.kidstime"
 	name="KidsTime"
-	version="1.1.1"
+	version="1.1.2"
 	provider-name="KAOSbox">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -482,7 +482,7 @@
 <addon
   id="skin.kaosbox.helix"
   version="3.0.4"
-  name="KAOSbox skin"
+  name="KAOSbox skin Helix"
   provider-name="KAOSbox">
   <requires>
     <import addon="xbmc.gui" version="5.3.0"/>

@@ -19,11 +19,12 @@ ART = xbmc.translatePath(os.path.join('special://home/addons/' + addonID + '/res
 
 channellist=[
     ("[COLOR blue]Baby >>[/COLOR]", "baby", ART+'baby.png'),
-    ("[COLOR green]Peuter & Kleuter >>[/COLOR]", "peuter", ART+'peuter.png'),
+    ("[COLOR magenta]Peuter & Kleuter >>[/COLOR]", "peuter", ART+'peuter.png'),
     ("[COLOR orange]Schoolgaand >>[/COLOR]", "schoolgaand", ART+'schoolgaand.png'),
     ("[COLOR red]Muziek >>[/COLOR] ", "muziek", ART+'muziek.png'),
-    ("[COLOR red]Engelse Muziek kanalen >>[/COLOR] ", "muziekengels", ART+'muziekengels.png'),
-    ("[COLOR yellow]Engelse Explore kanalen >>[/COLOR]", "engels", ART+'engels.png'),
+    ("[COLOR green]Minecraft >>[/COLOR]", "minecraft", ART+'minecraft.png'),
+    ("[COLOR red]Engelstalige Muziek kanalen >>[/COLOR] ", "muziekengels", ART+'muziekengels.png'),
+    ("[COLOR yellow]Engelstalige Explore kanalen >>[/COLOR]", "engels", ART+'engels.png'),
     ]
 
 sublists = {
@@ -34,33 +35,60 @@ sublists = {
      ],
 
 'peuter':[
+     ("Juf Roos", "channel/UCF8l-YD3e3LK1LnxFhNaNDQ", "http://i.imgur.com/fCyPI09.jpg"),
      ("Peuter & Kleuter liedjes", "user/Peuterliedjes", "http://i.imgur.com/oKIZdmK.jpg"),
      ("Peppa Pig", "channel/UCwNR9UNtcgzmRmNewxjsbmg", "http://i.imgur.com/pV3X12Z.jpg"),
      ("Nijntje", "user/NIJNTJE", "http://i.imgur.com/f31Qinn.jpg"),
+     ("Helden van de stad", "channel/UCk5BlpmOWMtbj0ncu9uz11A", "http://i.imgur.com/oT962H7.jpg"),
+     ("Dobus", "playlist/PLibeLWFwSRy6Flf6WQMFTMUQSmN_uehm_", "http://i.imgur.com/f7UFKoK.jpg"),
+     ("Disney Junior", "channel/UCD69tZl3tqlb3LJXf8U6Hqg", "http://i.imgur.com/ct7hjlW.jpg"),
      ("Mickey Mouse Clubhouse", "playlist/PLal1fCW8NLt_NMPmaAD6DGLsuR6xY5_Ff", "http://i.imgur.com/8YYm91m.jpg"),
      ("Efteling Sprookjesboom", "user/SprookjesboomTv", "http://i.imgur.com/JVMcRTa.jpg"),
      ("Efteling Jokie & Jet", "user/JokieEfteling", "http://i.imgur.com/SGVsy1l.jpg"),
      ("Kabouter Plop", "user/KabouterPlopKanaal", "http://i.imgur.com/bTO5mR4.jpg"),
+     ("Samson & Gert", "user/SamsonKanaal", "http://i.imgur.com/JJeh9a5.jpg"),
      ],
 
 'schoolgaand':[
+     ("Super Sportlets", "playlist/PLYAskUYrLf4Xapuncsobk11V1T8KylIVM", "http://i.imgur.com/nqz6d9m.jpg"),
      ("National Geographic Junior", "playlist/PL16F97188D646E450", "http://i.imgur.com/KebLOpC.jpg"),
+     ("Disney XD", "channel/UCh8JtgfHLUhW08yyQOD493A", "http://i.imgur.com/zS1K0pE.jpg"),
      ("Walt Disney Studios Nederland", "user/WaltDisneyStudiosNL", "http://i.imgur.com/Ui0lVz5.jpg"),
+     ("Nickelodeon", "channel/UCTfMaiRjr3goFg_Iqie2I8g", "http://i.imgur.com/jyKAVp7.jpg"),
+     ("Wickie de Viking", "user/WickieKanaal", "http://i.imgur.com/keHTmKj.jpg"),
+     ("Winx Club", "user/WinxClubNL1", "http://i.imgur.com/IHnpuWU.jpg"),
      ("Prinsessia", "user/prinsessiatv", "http://i.imgur.com/Ou2MNZo.jpg"),
      ("Tita Tovernaar", "user/Titatovenaar", "http://i.imgur.com/nQSmo7I.jpg"),
      ("Efteling Raveleijn", "user/Raveleijn", "http://i.imgur.com/2kuMsEf.jpg"),
      ("Bassie en Adriaan", "user/bassieadriaanchannel", "http://i.imgur.com/REyFIga.jpg"),
      ("Amika", "user/AmikaKanaal", "http://i.imgur.com/XRNctz8.jpg"),
      ("Mega Mindy", "user/MegaMindyKanaal", "http://i.imgur.com/dQ8EQn2.jpg"),
+     ("Rox", "user/RoxKanaal", "http://i.imgur.com/ftquvWd.jpg"),
      ("Heidi", "user/HeidiKanaal", "http://i.imgur.com/wX7N9kJ.jpg"),
      ("De Smurfen", "channel/UCeR6gZ7LpF-DB-d0clvwY4w", "http://i.imgur.com/wHGEfVH.jpg"),
      ("Oggy", "channel/UCNEKMkg_DG8eAyR1BNWsSvw", "http://i.imgur.com/fBLojgW.jpg"),
      ("Galaxy Park", "user/GalaxyParkKanaal", "http://i.imgur.com/Fzh5SOj.jpg"),
      ],
 
+
+'minecraft':[
+     ("[COLOR yellow]Dutch >>[/COLOR] GameMeneer", "user/GameMeneer", icon),
+     ("[COLOR yellow]Dutch >>[/COLOR] DusDavidCraft", "channel/UCrJqFkdAbEkX71gnSlH5aww", icon),
+     ("[COLOR yellow]Dutch >>[/COLOR] DusDavidGames", "channel/UCB8b8H_V6NMz8KdPtbdEq7g", icon),
+     ("[COLOR yellow]Dutch >>[/COLOR] DagelijksHaaDee", "channel/UCNPlSBggCmH8FJiMC2FYYpQ", icon),
+     ("[COLOR yellow]Dutch >>[/COLOR] DoeMaarGamen", "user/doemaargamen", icon),
+     ("[COLOR yellow]Dutch >>[/COLOR] TIES", "channel/UCxZfoESEhdM4zwnnrAVr5gg", icon),
+     ("[COLOR yellow]Dutch >>[/COLOR] AltijdCompilaties", "user/AltijdCompilaties", icon),
+     ("[COLOR yellow]Dutch >>[/COLOR] HetGameS", "user/HetGameS", icon),
+     ("[COLOR yellow]Dutch >>[/COLOR] JoostSpeeltSpellen", "user/JoostSpeeltSpellen", icon),
+     ("[COLOR yellow]Dutch >>[/COLOR] DylanPeys", "channel/UC0FS8uuTdt80f_RyBVggx9Q", icon),
+     ("[COLOR yellow]Dutch >>[/COLOR] DeGameHal", "user/DeGameHal", icon),
+      ],	
+
+
 'muziek':[
-     ("Roompot Minidisco", "playlist/PLal1fCW8NLt_pfOpanYsDSWZa9yJ9kHNk", icon),
-     ("Sprookjesboom dansvideo's", "playlist/PLGJ8-PwGgVmQo8jXnMDCnAdaVSwi0yJvP", icon),
+     ("Roompot Minidisco", "playlist/PLal1fCW8NLt_pfOpanYsDSWZa9yJ9kHNk", "http://i.imgur.com/YLf7d3n.jpg"),
+     ("Sprookjesboom dansvideo's", "playlist/PLGJ8-PwGgVmQo8jXnMDCnAdaVSwi0yJvP", "http://i.imgur.com/JVMcRTa.jpg"),
      ("Mini Disco", "channel/UCaynZO752koKaWub6EDaApA", "http://i.imgur.com/oKIZdmK.jpg"),
      ("Kinderen voor Kinderen", "user/ClubKVK", "http://i.imgur.com/1oho2f6.jpg"),
      ("K3", "user/K3Kanaal", "http://i.imgur.com/NDp5gYX.jpg"),
