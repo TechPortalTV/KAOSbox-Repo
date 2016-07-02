@@ -72,17 +72,17 @@ sublists = {
 
 
 'minecraft':[
-     ("[COLOR yellow]Dutch >>[/COLOR] GameMeneer", "user/GameMeneer", icon),
-     ("[COLOR yellow]Dutch >>[/COLOR] DusDavidCraft", "channel/UCrJqFkdAbEkX71gnSlH5aww", icon),
-     ("[COLOR yellow]Dutch >>[/COLOR] DusDavidGames", "channel/UCB8b8H_V6NMz8KdPtbdEq7g", icon),
-     ("[COLOR yellow]Dutch >>[/COLOR] DagelijksHaaDee", "channel/UCNPlSBggCmH8FJiMC2FYYpQ", icon),
-     ("[COLOR yellow]Dutch >>[/COLOR] DoeMaarGamen", "user/doemaargamen", icon),
-     ("[COLOR yellow]Dutch >>[/COLOR] TIES", "channel/UCxZfoESEhdM4zwnnrAVr5gg", icon),
-     ("[COLOR yellow]Dutch >>[/COLOR] AltijdCompilaties", "user/AltijdCompilaties", icon),
-     ("[COLOR yellow]Dutch >>[/COLOR] HetGameS", "user/HetGameS", icon),
-     ("[COLOR yellow]Dutch >>[/COLOR] JoostSpeeltSpellen", "user/JoostSpeeltSpellen", icon),
-     ("[COLOR yellow]Dutch >>[/COLOR] DylanPeys", "channel/UC0FS8uuTdt80f_RyBVggx9Q", icon),
-     ("[COLOR yellow]Dutch >>[/COLOR] DeGameHal", "user/DeGameHal", icon),
+     ("GameMeneer", "user/GameMeneer", icon),
+     ("DusDavidCraft", "channel/UCrJqFkdAbEkX71gnSlH5aww", icon),
+     ("DusDavidGames", "channel/UCB8b8H_V6NMz8KdPtbdEq7g", icon),
+     ("DagelijksHaaDee", "channel/UCNPlSBggCmH8FJiMC2FYYpQ", icon),
+     ("DoeMaarGamen", "user/doemaargamen", icon),
+     ("TIES", "channel/UCxZfoESEhdM4zwnnrAVr5gg", icon),
+     ("AltijdCompilaties", "user/AltijdCompilaties", icon),
+     ("HetGameS", "user/HetGameS", icon),
+     ("JoostSpeeltSpellen", "user/JoostSpeeltSpellen", icon),
+     ("DylanPeys", "channel/UC0FS8uuTdt80f_RyBVggx9Q", icon),
+     ("DeGameHal", "user/DeGameHal", icon),
       ],	
 
 
