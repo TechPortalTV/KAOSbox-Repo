@@ -1,6 +1,0 @@
-1.1.0
-- removed required video addons in addon.xml
-- requests version update to 2.3.0
-- switched to bromix's youtube addon
-1.0.0
-- categories: episodes, sol sessions, ibiza global radio, other videos
